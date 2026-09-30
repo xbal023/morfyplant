@@ -1040,81 +1040,90 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
 
         <div className="grid">
 
-          {/* Tabula V.1 - Anatomi Biji Dikotil */}
           <figure className="box">
             <div className="plate-header">
               <span>Tabula V.1</span>
               <span>Anatomi Semen Dicotyledonae</span>
             </div>
-            <svg viewBox="0 0 380 290" role="img" aria-label="Anatomi biji dikotil">
-              {/* Testa (kulit luar) */}
-              <ellipse cx="180" cy="150" rx="105" ry="80" fill="var(--soft)" stroke="var(--root)" strokeWidth="5"/>
-              {/* Tegmen (kulit dalam - tracing putus) */}
-              <ellipse cx="180" cy="150" rx="96" ry="72" fill="none" stroke="var(--leaf)" strokeWidth="1.5" strokeDasharray="4 2"/>
+            {/* SVG dengan diagram terpusat dan label di luar semua */}
+            <svg viewBox="0 0 300 240" role="img" aria-label="Anatomi biji dikotil" style={{display:"block",width:"100%"}}>
+              {/* === Biji centered at 150,125, ukuran lebih kecil === */}
+              {/* Testa */}
+              <ellipse cx="150" cy="125" rx="82" ry="62" fill="var(--soft)" stroke="var(--root)" strokeWidth="4"/>
+              {/* Tegmen */}
+              <ellipse cx="150" cy="125" rx="74" ry="55" fill="none" stroke="var(--leaf)" strokeWidth="1.5" strokeDasharray="4 2"/>
               {/* Kotiledon kiri */}
-              <ellipse cx="158" cy="155" rx="58" ry="55" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.5" opacity="0.6"/>
+              <ellipse cx="133" cy="128" rx="45" ry="43" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.5" opacity="0.55"/>
               {/* Kotiledon kanan */}
-              <ellipse cx="202" cy="155" rx="58" ry="55" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.5" opacity="0.6"/>
+              <ellipse cx="167" cy="128" rx="45" ry="43" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.5" opacity="0.55"/>
               {/* Axis embrio */}
-              <rect x="168" y="125" width="24" height="58" rx="10" fill="var(--flower,#e91e8c)" opacity="0.6"/>
+              <rect x="141" y="102" width="18" height="46" rx="8" fill="var(--flower,#e91e8c)" opacity="0.65"/>
               {/* Plumula */}
-              <ellipse cx="180" cy="122" rx="14" ry="8" fill="var(--leaf)" opacity="0.85"/>
+              <ellipse cx="150" cy="100" rx="11" ry="6" fill="var(--leaf)" opacity="0.9"/>
               {/* Radikula */}
-              <ellipse cx="180" cy="188" rx="10" ry="6" fill="var(--root)" opacity="0.8"/>
+              <ellipse cx="150" cy="152" rx="8" ry="5" fill="var(--root)" opacity="0.85"/>
               {/* Hilum */}
-              <ellipse cx="77" cy="150" rx="8" ry="14" fill="var(--mute)" stroke="var(--fg)" strokeWidth="1.2"/>
-              {/* Mikropil */}
-              <circle cx="77" cy="132" r="3" fill="var(--fg)" opacity="0.5"/>
-              {/* Chalaza */}
-              <circle cx="77" cy="168" r="3" fill="var(--fg)" opacity="0.5"/>
+              <ellipse cx="70" cy="125" rx="6" ry="11" fill="var(--mute)" stroke="var(--fg)" strokeWidth="1.2"/>
+              {/* Mikropil dot */}
+              <circle cx="70" cy="111" r="2.5" fill="var(--fg)" opacity="0.55"/>
+              {/* Chalaza dot */}
+              <circle cx="70" cy="139" r="2.5" fill="var(--fg)" opacity="0.55"/>
 
-              {/* Kiri — Mikropil */}
-              <line x1="74" y1="129" x2="40" y2="95" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="5" y="88" fontSize="8" fill="var(--fg)" fontWeight="600">Mikropil</text>
-              <text x="5" y="99" fontSize="7" fill="var(--mute)">(lubang serbuk sari)</text>
+              {/* === Label panah kiri — VERTIKAL jelas, tidak tumpang tindih === */}
+              {/* Mikropil — paling atas */}
+              <line x1="68" y1="109" x2="20" y2="60" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="18" y="55" fontSize="8.5" fill="var(--fg)" fontWeight="700" textAnchor="middle">①</text>
 
-              {/* Kiri — Hilum */}
-              <line x1="69" y1="142" x2="40" y2="125" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="5" y="120" fontSize="8" fill="var(--fg)" fontWeight="600">Hilum</text>
-              <text x="5" y="131" fontSize="7" fill="var(--mute)">(pusar biji)</text>
+              {/* Hilum — tengah */}
+              <line x1="64" y1="122" x2="20" y2="105" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="18" y="100" fontSize="8.5" fill="var(--fg)" fontWeight="700" textAnchor="middle">②</text>
 
-              {/* Kiri — Chalaza */}
-              <line x1="74" y1="170" x2="40" y2="185" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="5" y="181" fontSize="8" fill="var(--fg)" fontWeight="600">Chalaza</text>
-              <text x="5" y="192" fontSize="7" fill="var(--mute)">(dasar ovulum)</text>
+              {/* Chalaza — bawah */}
+              <line x1="68" y1="139" x2="20" y2="168" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="18" y="163" fontSize="8.5" fill="var(--fg)" fontWeight="700" textAnchor="middle">③</text>
 
-              {/* Kanan atas — Testa */}
-              <line x1="264" y1="90" x2="300" y2="70" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="302" y="67" fontSize="8" fill="var(--fg)" fontWeight="600">Testa</text>
-              <text x="302" y="78" fontSize="7" fill="var(--mute)">(kulit luar)</text>
+              {/* === Label panah kanan === */}
+              {/* Testa */}
+              <line x1="220" y1="78" x2="258" y2="55" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="260" y="51" fontSize="8.5" fill="var(--fg)" fontWeight="700">④</text>
 
-              {/* Kanan — Tegmen */}
-              <line x1="259" y1="107" x2="300" y2="95" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="302" y="92" fontSize="8" fill="var(--fg)" fontWeight="600">Tegmen</text>
-              <text x="302" y="103" fontSize="7" fill="var(--mute)">(kulit dalam)</text>
+              {/* Tegmen */}
+              <line x1="214" y1="90" x2="258" y2="78" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="260" y="74" fontSize="8.5" fill="var(--fg)" fontWeight="700">⑤</text>
 
-              {/* Kanan — Kotiledon */}
-              <line x1="250" y1="172" x2="300" y2="168" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="302" y="165" fontSize="8" fill="var(--fg)" fontWeight="600">Kotiledon</text>
+              {/* Plumula */}
+              <line x1="160" y1="98" x2="258" y2="98" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="260" y="94" fontSize="8.5" fill="var(--fg)" fontWeight="700">⑥</text>
 
-              {/* Kanan — Axis embrio */}
-              <line x1="192" y1="148" x2="300" y2="140" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="302" y="137" fontSize="8" fill="var(--fg)" fontWeight="600">Axis embrio</text>
+              {/* Axis embrio */}
+              <line x1="159" y1="118" x2="258" y2="120" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="260" y="116" fontSize="8.5" fill="var(--fg)" fontWeight="700">⑦</text>
 
-              {/* Kanan — Plumula */}
-              <line x1="192" y1="122" x2="300" y2="110" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="302" y="107" fontSize="8" fill="var(--fg)" fontWeight="600">Plumula</text>
-              <text x="302" y="118" fontSize="7" fill="var(--mute)">(calon pucuk)</text>
+              {/* Kotiledon */}
+              <line x1="200" y1="148" x2="258" y2="143" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="260" y="139" fontSize="8.5" fill="var(--fg)" fontWeight="700">⑧</text>
 
-              {/* Kanan — Radikula */}
-              <line x1="188" y1="192" x2="300" y2="200" stroke="var(--mute)" strokeWidth="1"/>
-              <text x="302" y="197" fontSize="8" fill="var(--fg)" fontWeight="600">Radikula</text>
-              <text x="302" y="208" fontSize="7" fill="var(--mute)">(calon akar)</text>
+              {/* Radikula */}
+              <line x1="157" y1="155" x2="258" y2="165" stroke="var(--mute)" strokeWidth="0.9" strokeDasharray="2 1"/>
+              <text x="260" y="161" fontSize="8.5" fill="var(--fg)" fontWeight="700">⑨</text>
 
-              <text x="160" y="282" fontSize="8" fontStyle="italic" fill="var(--mute)" textAnchor="middle">Phaseolus vulgaris (kacang merah)</text>
+              {/* italic species */}
+              <text x="150" y="232" fontSize="7.5" fontStyle="italic" fill="var(--mute)" textAnchor="middle">Phaseolus vulgaris (kacang merah)</text>
             </svg>
+            {/* Legenda nomor — di bawah SVG, bukan di dalam SVG */}
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"2px 10px",fontSize:"0.72rem",padding:"6px 8px",borderTop:"1px solid var(--line)"}}>
+              <span><b>①</b> Mikropil — jalur masuk serbuk sari</span>
+              <span><b>⑥</b> Plumula — calon pucuk daun</span>
+              <span><b>②</b> Hilum — pusar biji (bekas funikulus)</span>
+              <span><b>⑦</b> Axis embrio</span>
+              <span><b>③</b> Chalaza — dasar ovulum</span>
+              <span><b>⑧</b> Kotiledon (2 lembar)</span>
+              <span><b>④</b> Testa — kulit luar biji</span>
+              <span><b>⑨</b> Radikula — calon akar primer</span>
+              <span><b>⑤</b> Tegmen — kulit dalam biji</span>
+            </div>
             <figcaption>
-              Penampang biji dikotil. Embrio terdiri atas plumula, radikula, dan dua kotiledon yang berfungsi sebagai cadangan makanan.
+              Penampang biji dikotil. Embrio terdiri atas plumula, radikula, dan dua kotiledon sebagai cadangan makanan.
             </figcaption>
           </figure>
 
@@ -1153,65 +1162,74 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
             </figcaption>
           </figure>
 
-          {/* Tabula V.3 - Kulit Biji */}
-          <figure className="box">
+          {/* Tabula V.3 — Integumentum Seminis (tabel, bukan SVG) */}
+          <figure className="box" style={{gridColumn:"span 2"}}>
             <div className="plate-header">
               <span>Tabula V.3</span>
-              <span>Integumentum Seminis</span>
+              <span>Integumentum Seminis — Lapisan Kulit &amp; Struktur Permukaan Biji</span>
             </div>
-            <svg viewBox="0 0 300 320" role="img" aria-label="Lapisan kulit biji">
-              {/* Outer border */}
-              <rect x="20" y="10" width="260" height="295" rx="8" fill="var(--bg,#fff)" stroke="var(--line)" strokeWidth="1.2"/>
-
-              {/* === TESTA zone (row 1) === */}
-              <rect x="20" y="10" width="260" height="78" rx="8" fill="var(--root)" opacity="0.18"/>
-              {/* Exotesta sub-row */}
-              <rect x="20" y="10" width="260" height="26" rx="8" fill="var(--root)" opacity="0.35"/>
-              <text x="150" y="27" textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--fg)">Exotesta</text>
-              <text x="150" y="38" textAnchor="middle" fontSize="7.5" fill="var(--mute)">sel epidermis luar (kulit luar)</text>
-              {/* Mesotesta sub-row */}
-              <text x="150" y="54" textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--fg)">Mesotesta</text>
-              <text x="150" y="65" textAnchor="middle" fontSize="7.5" fill="var(--mute)">sel parenkim dan sklerenkim</text>
-              {/* TESTA label */}
-              <text x="150" y="82" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="var(--root)" opacity="0.85">▲ TESTA (Kulit Luar / Spermodermis)</text>
-
-              {/* === TEGMEN zone (row 2) === */}
-              <rect x="20" y="88" width="260" height="42" fill="var(--leaf)" opacity="0.16"/>
-              <text x="150" y="106" textAnchor="middle" fontSize="9.5" fontWeight="800" fill="var(--leaf)">TEGMEN (Kulit Dalam)</text>
-              <text x="150" y="119" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Dari integumen dalam ovulum; sering tipis/menyatu dengan testa</text>
-
-              {/* === 3 boxes row === */}
-              {/* Hilum */}
-              <rect x="20" y="130" width="82" height="72" fill="var(--flower,#e91e8c)" opacity="0.12" stroke="var(--flower,#e91e8c)" strokeWidth="0.8"/>
-              <text x="61" y="148" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="var(--fg)">Hilum</text>
-              <text x="61" y="161" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Pusar biji</text>
-              <text x="61" y="172" textAnchor="middle" fontSize="7.5" fill="var(--mute)">(bekas funikulus</text>
-              <text x="61" y="183" textAnchor="middle" fontSize="7.5" fill="var(--mute)">/ tangkai ovulum)</text>
-
-              {/* Mikropil */}
-              <rect x="109" y="130" width="82" height="72" fill="var(--accent,#9c27b0)" opacity="0.09" stroke="var(--accent,#9c27b0)" strokeWidth="0.8"/>
-              <text x="150" y="148" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="var(--fg)">Mikropil</text>
-              <text x="150" y="161" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Lubang kecil pada</text>
-              <text x="150" y="172" textAnchor="middle" fontSize="7.5" fill="var(--mute)">integumen; jalur</text>
-              <text x="150" y="183" textAnchor="middle" fontSize="7.5" fill="var(--mute)">serbuk sari masuk</text>
-
-              {/* Raphe */}
-              <rect x="198" y="130" width="82" height="72" fill="var(--soft)" stroke="var(--line)" strokeWidth="0.8"/>
-              <text x="239" y="148" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="var(--fg)">Raphe</text>
-              <text x="239" y="161" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Alur pada testa;</text>
-              <text x="239" y="172" textAnchor="middle" fontSize="7.5" fill="var(--mute)">sisa funikulus</text>
-              <text x="239" y="183" textAnchor="middle" fontSize="7.5" fill="var(--mute)">yang berfusi</text>
-
-              {/* === Chalaza zone (row 4) === */}
-              <rect x="20" y="202" width="260" height="90" rx="8" fill="var(--soft)" stroke="var(--line)" strokeWidth="1"/>
-              <text x="150" y="222" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="var(--fg)">Chalaza</text>
-              <text x="150" y="237" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Ujung basal ovulum — tempat funikulus bersambung ke nukselus.</text>
-              <text x="150" y="250" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Penting dalam transfer nutrisi dari tumbuhan induk ke embrio.</text>
-              <text x="150" y="263" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Integumen berfusi kuat di titik ini membentuk chalazogami pada</text>
-              <text x="150" y="276" textAnchor="middle" fontSize="7.5" fill="var(--mute)">beberapa taksa (mis. Casuarina, Betula).</text>
-            </svg>
+            <table style={{marginTop:"0.5rem"}}>
+              <thead>
+                <tr>
+                  <th style={{width:"16%"}}>Struktur</th>
+                  <th style={{width:"18%"}}>Nama Latin</th>
+                  <th style={{width:"22%"}}>Asal / Lapisan</th>
+                  <th>Deskripsi &amp; Fungsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Exotesta</strong></td>
+                  <td><i>Exospermodermis</i></td>
+                  <td>Epidermis luar integumen luar</td>
+                  <td>Lapisan paling luar; sering berupa sel memanjang tebal atau berkeratin. Berfungsi sebagai barier mekanik utama.</td>
+                </tr>
+                <tr>
+                  <td><strong>Mesotesta</strong></td>
+                  <td><i>Mesospermodermis</i></td>
+                  <td>Parenkim integumen luar</td>
+                  <td>Lapisan tengah testa; mengandung sel sklerenkim (batu) atau parenkim. Menentukan kekerasan biji.</td>
+                </tr>
+                <tr>
+                  <td><strong>Testa</strong> (Kulit Luar)</td>
+                  <td><i>Testa / Spermodermis</i></td>
+                  <td>Integumen luar ovulum</td>
+                  <td>Keseluruhan kulit luar biji (exotesta + mesotesta). Melindungi embrio dari kekeringan, serangan patogen, dan kerusakan fisik.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tegmen</strong> (Kulit Dalam)</td>
+                  <td><i>Tegmen / Endospermodermis</i></td>
+                  <td>Integumen dalam ovulum</td>
+                  <td>Kulit biji bagian dalam; umumnya tipis. Pada biji masak sering menyatu dengan testa atau terdegradasi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Hilum</strong></td>
+                  <td><i>Hilum</i></td>
+                  <td>Bekas funikulus (tangkai ovulum)</td>
+                  <td>Bercak atau garis pada testa; menandai tempat biji melekat ke plasenta. Jalur awal masuknya air saat imbibisi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Mikropil</strong></td>
+                  <td><i>Micropyle</i></td>
+                  <td>Celah antar-integumen</td>
+                  <td>Lubang kecil dekat hilum; awalnya jalur masuk tabung serbuk sari. Saat germinasi berfungsi sebagai jalur imbibisi air.</td>
+                </tr>
+                <tr>
+                  <td><strong>Raphe</strong></td>
+                  <td><i>Raphe</i></td>
+                  <td>Funikulus yang berfusi ke testa (pada biji anatropa)</td>
+                  <td>Terlihat sebagai alur atau rabung memanjang pada permukaan testa. Berguna sebagai penanda orientasi biji dalam identifikasi.</td>
+                </tr>
+                <tr>
+                  <td><strong>Chalaza</strong></td>
+                  <td><i>Chalaza</i></td>
+                  <td>Ujung basal nuselus</td>
+                  <td>Titik tempat funikulus bersambung ke nuselus dan integumen. Jalur utama transfer nutrisi dari induk ke embrio. Pada beberapa taksa membentuk pola chalazogami.</td>
+                </tr>
+              </tbody>
+            </table>
             <figcaption>
-              Lapisan integumen biji: testa, tegmen, hilum (pusar biji), mikropil, raphe, dan chalaza.
+              Lapisan dan struktur permukaan integumen biji: dari exotesta (lapisan terluar) hingga chalaza (ujung basal). Sumber: Tjitrosoepomo (2010), Esau (1977).
             </figcaption>
           </figure>
 
