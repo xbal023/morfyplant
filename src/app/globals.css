@@ -1,14 +1,19 @@
 :root {
-  --bg: #f1f6f2;
-  --card: #fff;
-  --ink: #15301f;
-  --mute: #4d6656;
-  --line: #cfdcd3;
-  --root: #8a5a2b;
-  --stem: #b8891a;
-  --leaf: #2c7a4b;
-  --soft: #e2eee6;
-  --fl: #b8407a;
+  /* Fresh Academic & Archival Botanical Palette */
+  --bg: #f8f9f6;
+  --card: #ffffff;
+  --ink: #16241a;
+  --mute: #54685b;
+  --line: #dbe2da;
+  --root: #7c4d28;
+  --stem: #966a1a;
+  --leaf: #1d5937;
+  --soft: #edf3ec;
+  --soft-border: #ccd8ca;
+  --fl: #993264;
+  --accent: #235438;
+  --mono: ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+  
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -16,30 +21,49 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1b14;
-    --card: #172a1f;
-    --ink: #e6f1e9;
-    --mute: #9db5a5;
-    --line: #2c4436;
-    --root: #d09a5f;
-    --stem: #e0b64a;
-    --leaf: #6cc48c;
-    --soft: #1f3628;
-    --fl: #e58ab8;
+    --bg: #111813;
+    --card: #18231c;
+    --ink: #e6eee7;
+    --mute: #8e9f93;
+    --line: #26382c;
+    --root: #c48956;
+    --stem: #cca03c;
+    --leaf: #4ea874;
+    --soft: #1d2c22;
+    --soft-border: #2c4434;
+    --fl: #db72a2;
+    --accent: #4ea874;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #0f1b14;
-  --card: #172a1f;
-  --ink: #e6f1e9;
-  --mute: #9db5a5;
-  --line: #2c4436;
-  --root: #d09a5f;
-  --stem: #e0b64a;
-  --leaf: #6cc48c;
-  --soft: #1f3628;
-  --fl: #e58ab8;
+  --bg: #111813;
+  --card: #18231c;
+  --ink: #e6eee7;
+  --mute: #8e9f93;
+  --line: #26382c;
+  --root: #c48956;
+  --stem: #cca03c;
+  --leaf: #4ea874;
+  --soft: #1d2c22;
+  --soft-border: #2c4434;
+  --fl: #db72a2;
+  --accent: #4ea874;
+}
+
+:root[data-theme="light"] {
+  --bg: #f8f9f6;
+  --card: #ffffff;
+  --ink: #16241a;
+  --mute: #54685b;
+  --line: #dbe2da;
+  --root: #7c4d28;
+  --stem: #966a1a;
+  --leaf: #1d5937;
+  --soft: #edf3ec;
+  --soft-border: #ccd8ca;
+  --fl: #993264;
+  --accent: #235438;
 }
 
 html {
@@ -55,101 +79,201 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 16px/1.6 "Literata", Georgia, serif;
+  font: 15.5px/1.65 "Literata", Georgia, "Times New Roman", serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
-  max-width: 980px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 20px 16px 48px;
+  padding: 28px 20px 60px;
 }
 
-h1, h2, h3 {
-  font-family: "Bricolage Grotesque", system-ui, -apple-system, sans-serif;
-  line-height: 1.15;
-  margin: 0;
+/* Header & Masthead Akademis */
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+.masthead-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.masthead-meta .badge {
+  background: var(--soft);
+  color: var(--leaf);
+  border: 1px solid var(--soft-border);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 h1 {
-  font-size: clamp(28px, 6vw, 44px);
-  margin-bottom: 6px;
+  font-family: "Literata", Georgia, serif;
+  font-size: clamp(26px, 4.5vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--mute);
+  font-size: 0.9em;
 }
 
 .sub-title {
   color: var(--mute);
-  margin: 0 0 18px;
+  margin: 0;
+  font-size: 15px;
+  max-width: 720px;
 }
 
-/* Navigasi Utama */
+.theme-toggle {
+  padding: 5px 12px;
+  font-size: 12px;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--soft);
+  border-color: var(--soft-border);
+}
+
+/* Navigasi Utama: Segmented Academic Tabs */
+.tabs-container {
+  background: var(--soft);
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+
 .tabs {
   display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 4px;
 }
 
 .tabs button {
   flex: 1;
-  padding: 10px 14px;
-  font-size: 15px;
+  padding: 8px 16px;
+  font-size: 14px;
   background: transparent;
-  color: var(--ink);
-  border: 1.5px solid var(--leaf);
-  border-radius: 99px;
+  color: var(--mute);
+  border: 1px solid transparent;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+  transition: all 0.15s ease;
+}
+
+.tabs button:hover {
+  color: var(--ink);
 }
 
 .tabs button.on {
-  background: var(--leaf);
-  color: var(--bg);
+  background: var(--card);
+  color: var(--ink);
+  border-color: var(--line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* Sub-Navigasi Materi */
+/* Sub-Navigasi Organ Botani */
 nav.sub-nav {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
   position: sticky;
   top: env(safe-area-inset-top, 0px);
   background: var(--bg);
   padding: 8px 0;
-  z-index: 2;
-  margin-top: 2px;
+  z-index: 10;
+  margin-top: 4px;
+  border-bottom: 1px solid var(--line);
 }
 
 .sub-nav button {
-  padding: 6px 14px;
-  border-radius: 99px;
-  border: 1.5px solid var(--line);
-  background: transparent;
-  color: var(--ink);
-  font: 600 14px "Bricolage Grotesque", system-ui, sans-serif;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--mute);
+  font: 600 13px "Bricolage Grotesque", system-ui, sans-serif;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
-.sub-nav button:nth-child(1) { border-color: var(--root); }
-.sub-nav button:nth-child(2) { border-color: var(--stem); }
-.sub-nav button:nth-child(3) { border-color: var(--leaf); }
-.sub-nav button:nth-child(4) { border-color: var(--fl); }
+.sub-nav button:hover {
+  border-color: var(--leaf);
+  color: var(--ink);
+}
 
 .sub-nav button.on {
   background: var(--soft);
-  box-shadow: inset 0 -3px 0 currentColor;
+  border-color: var(--accent);
+  color: var(--ink);
+  font-weight: 700;
 }
 
-/* Section & Konten */
+.sub-nav button.on::before {
+  content: "• ";
+  color: var(--leaf);
+}
+
+/* Konten & Tipografi Bagian */
 section {
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
 h2 {
-  font-size: 30px;
-  padding-left: 12px;
-  border-left: 8px solid var(--c);
-  margin-bottom: 14px;
+  font-family: "Literata", Georgia, serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 10px;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+h2 .latin-tag {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 #akar { --c: var(--root); }
@@ -159,21 +283,168 @@ h2 {
 #deskripsi { --c: var(--leaf); }
 
 h3 {
-  font-size: 18px;
-  margin: 18px 0 8px;
-  color: var(--c);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 24px 0 10px;
+  color: var(--ink);
+  border-left: 3px solid var(--leaf);
+  padding-left: 8px;
 }
 
+p.lead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+/* Scientific Plates Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 14px;
+  gap: 16px;
   align-items: start;
 }
 
+.box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px 14px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-self: start;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.box:hover {
+  border-color: var(--soft-border);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+.plate-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+figcaption {
+  font-family: "Literata", Georgia, serif;
+  font-size: 12px;
+  color: var(--mute);
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.45;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+  width: 100%;
+}
+
+figcaption em, figcaption i {
+  font-style: italic;
+  color: var(--ink);
+}
+
+svg {
+  max-width: 210px;
+  max-height: 160px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+svg text {
+  font: 11px "Bricolage Grotesque", system-ui, sans-serif;
+  fill: var(--ink);
+}
+
+.ln {
+  stroke: var(--mute);
+  stroke-width: 1;
+  fill: none;
+}
+
+/* Tabel Monograf Akademis (Gaya Jurnal Sains) */
+.tblwrap {
+  overflow-x: auto;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  margin-top: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13.5px;
+  min-width: 500px;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: var(--soft);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid var(--line);
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+tr:hover td {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+/* Callout Box: Catatan Taksonomi / Kunci Determinasi */
+.tip {
+  background: var(--soft);
+  border-left: 3px solid var(--leaf);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.tip b {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Form Karakterisasi Lapangan (Masonry Layout) */
 .form-masonry {
   column-count: 1;
-  column-gap: 14px;
+  column-gap: 16px;
+  margin-top: 16px;
 }
 
 @media (min-width: 640px) {
@@ -190,228 +461,81 @@ h3 {
 
 .form-masonry > fieldset {
   break-inside: avoid;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
 }
 
-.box {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  align-self: start;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.box:hover {
-  border-color: var(--leaf);
-}
-
-.box h3 {
-  margin-top: 0;
-}
-
-figure {
-  margin: 0;
-}
-
-figcaption {
-  font-size: 12.5px;
-  color: var(--mute);
-  text-align: center;
-  margin-top: 8px;
-  line-height: 1.4;
-}
-
-svg {
-  max-width: 220px;
-  max-height: 170px;
-  width: auto;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-svg text {
-  font: 11.5px "Bricolage Grotesque", system-ui, sans-serif;
-  fill: var(--ink);
-}
-
-.ln {
-  stroke: var(--mute);
-  stroke-width: 1;
-  fill: none;
-}
-
-/* Tabel */
-.tblwrap {
-  overflow-x: auto;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  font-size: 13.5px;
-  min-width: 480px;
-}
-
-th, td {
-  padding: 6px 10px;
-  text-align: left;
-  border-bottom: 1px solid var(--line);
-  vertical-align: top;
-}
-
-th {
-  background: var(--soft);
-  font-family: "Bricolage Grotesque", system-ui, sans-serif;
-}
-
-tr:last-child td {
-  border-bottom: 0;
-}
-
-ul {
-  margin: 6px 0;
-  padding-left: 20px;
-}
-
-li {
-  margin: 3px 0;
-}
-
-.tip {
-  background: var(--soft);
-  border-left: 4px solid var(--c, var(--leaf));
-  padding: 8px 12px;
-  border-radius: 0 8px 8px 0;
-  margin-top: 14px;
-  font-size: 14.5px;
-}
-
-footer {
-  margin-top: 36px;
-  color: var(--mute);
-  font-size: 13px;
-  border-top: 1px solid var(--line);
-  padding-top: 16px;
-}
-
-/* Form Deskripsi */
 fieldset {
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--card);
-  padding: 10px 12px 12px;
+  padding: 10px 14px 14px;
   margin: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 legend {
-  font: 700 14px "Bricolage Grotesque", system-ui, sans-serif;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   padding: 2px 8px;
-  border-radius: 6px;
+  border-radius: 4px;
   background: var(--soft);
   color: var(--ink);
-  border: 1px solid var(--line);
+  border: 1px solid var(--soft-border);
 }
 
-label {
-  display: block;
-  font-size: 12.5px;
+.fld {
+  position: relative;
+  margin-top: 8px;
+}
+
+.lb {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--mute);
-  margin-top: 4px;
+  margin-bottom: 3px;
 }
 
 select, input, textarea {
   width: 100%;
-  padding: 5px 8px;
+  padding: 6px 10px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--bg);
   color: var(--ink);
   font: 14px "Literata", Georgia, serif;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 input:focus, textarea:focus, select:focus {
-  outline: 2px solid var(--leaf);
-  outline-offset: 1px;
-}
-
-#out {
-  white-space: pre-wrap;
-  background: var(--card);
-  border: 1.5px solid var(--leaf);
-  border-radius: 10px;
-  padding: 12px 14px;
-  margin-top: 8px;
-  min-height: 70px;
-  font-family: "Literata", Georgia, serif;
-  font-size: 14.5px;
-  line-height: 1.6;
-}
-
-.btns {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-button {
-  padding: 7px 14px;
-  border-radius: 99px;
-  border: 1.5px solid var(--leaf);
-  background: var(--leaf);
-  color: var(--bg);
-  font: 600 13.5px "Bricolage Grotesque", system-ui, sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-button.alt {
-  background: transparent;
-  color: var(--ink);
-  border-color: var(--line);
-}
-
-button.alt:hover {
+  outline: none;
   border-color: var(--leaf);
-}
-
-.fld {
-  position: relative;
-  margin-top: 6px;
-}
-
-.lb {
-  font-size: 12px;
-  color: var(--mute);
-  margin-bottom: 2px;
+  box-shadow: 0 0 0 3px rgba(36, 94, 61, 0.1);
 }
 
 .pk {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: var(--bg);
   color: var(--ink);
   border: 1px solid var(--line);
   border-radius: 6px;
-  padding: 3px 6px;
+  padding: 4px 8px;
   text-align: left;
   font: 13.5px "Literata", Georgia, serif;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pk:hover {
+  border-color: var(--leaf);
 }
 
 .pk span {
@@ -428,25 +552,25 @@ button.alt:hover {
 }
 
 .pk svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .pop {
   position: absolute;
   left: 0;
   right: 0;
-  top: 100%;
-  z-index: 20;
+  top: calc(100% + 4px);
+  z-index: 30;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
   padding: 6px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
   gap: 4px;
-  max-height: 260px;
+  max-height: 240px;
   overflow: auto;
 }
 
@@ -455,37 +579,157 @@ button.alt:hover {
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  padding: 5px 2px;
+  padding: 6px 2px;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: 6px;
   background: none;
   color: var(--ink);
-  font: 11px/1.15 "Bricolage Grotesque", system-ui, sans-serif;
+  font: 11px/1.2 "Bricolage Grotesque", system-ui, sans-serif;
   text-align: center;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .tile:hover {
   background: var(--soft);
+  border-color: var(--line);
 }
 
 .tile.on {
   border-color: var(--leaf);
   background: var(--soft);
+  font-weight: 700;
 }
 
-.pk svg, .tile svg {
-  width: 30px;
-  height: 30px;
+.tile svg {
+  width: 26px;
+  height: 26px;
   flex: none;
 }
 
-.pk svg {
-  width: 28px;
-  height: 28px;
+/* Output Display: Schedula Herbarii (Lembar Spesimen Herbarium) */
+.output-card {
+  margin-top: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
 }
 
-/* SVG Palette Classes */
+.output-header {
+  background: var(--soft);
+  border-bottom: 1px solid var(--line);
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+#out {
+  white-space: pre-wrap;
+  background: var(--card);
+  padding: 18px 20px;
+  min-height: 90px;
+  font-family: "Literata", Georgia, serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.seg {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.seg button {
+  padding: 5px 12px;
+  background: var(--card);
+  color: var(--mute);
+  border: 1px solid var(--line);
+  font: 600 12.5px "Bricolage Grotesque", system-ui, sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.seg button:hover {
+  color: var(--ink);
+  border-color: var(--leaf);
+}
+
+.seg button.on {
+  background: var(--leaf);
+  border-color: var(--leaf);
+  color: #ffffff;
+}
+
+.mn {
+  font-size: 12.5px;
+  color: var(--mute);
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+
+.btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+button.primary {
+  padding: 7px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--leaf);
+  background: var(--leaf);
+  color: #ffffff;
+  font: 600 13px "Bricolage Grotesque", system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+button.primary:hover {
+  background: #17472c;
+}
+
+button.alt {
+  padding: 7px 14px;
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font: 600 13px "Bricolage Grotesque", system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+button.alt:hover {
+  background: var(--soft);
+  border-color: var(--soft-border);
+}
+
+footer {
+  margin-top: 48px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--mute);
+  font-size: 12.5px;
+  line-height: 1.55;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Palet Warna SVG Anatomi Botani */
 svg .i { fill: var(--leaf); }
 svg .t { fill: var(--stem); }
 svg .d { fill: var(--root); }
@@ -509,62 +753,22 @@ svg .l { stroke: var(--ink); stroke-width: 1.5; }
 svg .w { stroke: var(--card); stroke-width: 1.6; }
 svg .ds { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2; }
 
-.seg {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-}
-
-.seg button {
-  padding: 6px 12px;
-  background: transparent;
-  color: var(--ink);
-  border: 1.5px solid var(--line);
-  font-size: 13.5px;
-  border-radius: 99px;
-  cursor: pointer;
-}
-
-.seg button.on {
-  background: var(--leaf);
-  border-color: var(--leaf);
-  color: var(--bg);
-}
-
-.mn {
-  font-size: 13px;
-  color: var(--mute);
-  margin: 6px 0 0;
-}
-
-.header-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.theme-toggle {
-  padding: 6px 12px;
-  font-size: 13px;
-  border-radius: 99px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--ink);
-  cursor: pointer;
-  white-space: nowrap;
-}
-
 @media print {
-  nav, .tabs, .sub-nav, .btns, .seg, #deskripsi form, .theme-toggle {
+  nav, .tabs-container, .sub-nav, .btns, .seg, #deskripsi form, .theme-toggle, .masthead-meta {
     display: none !important;
   }
   body {
-    background: #fff !important;
-    color: #000 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
   }
   .pane.off {
     display: block !important;
+  }
+  .output-card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+  #out {
+    padding: 0 !important;
   }
 }

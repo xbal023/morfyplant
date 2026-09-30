@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Atlas & Morfologi Tumbuhan (Spermatophyta)",
+  title: "Atlas Morfologi Tumbuhan • Herbarium Digitalis",
   description:
-    "Panduan komprehensif organografi vegetatif dan generatif tumbuhan berbiji beserta lembar kerja karakterisasi spesimen herbarium.",
+    "Kompendium komparatif organografi tumbuhan berbiji (Spermatophyta) dan instrumen karakterisasi spesimen herbarium berstandar botani.",
   keywords: [
     "morfologi tumbuhan",
     "organografi",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "fructus",
     "dikotil",
     "monokotil",
-    "botani",
+    "herbarium",
     "Gembong Tjitrosoepomo",
   ],
 };
@@ -25,8 +25,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f1f6f2" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f1b14" },
+    { media: "(prefers-color-scheme: light)", color: "#f8f9f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#111813" },
   ],
 };
 
@@ -46,7 +46,7 @@ export default function RootLayout({
         />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Literata:ital,wght@0,400;0,600;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,400&display=swap"
         />
       </head>
       <body>{children}</body>

@@ -7,7 +7,7 @@ import { TraitPicker } from "./TraitPicker";
 export const MorphologyDescriber: React.FC = () => {
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [mode, setMode] = useState<OutputMode>("dua");
-  const [copyFeedback, setCopyFeedback] = useState<string>("Salin Deskripsi");
+  const [copyFeedback, setCopyFeedback] = useState<string>("Salin Schedula");
 
   const handleFieldChange = (id: string, value: string) => {
     setFormData((prev) => ({
@@ -29,7 +29,7 @@ export const MorphologyDescriber: React.FC = () => {
       if (navigator?.clipboard?.writeText) {
         await navigator.clipboard.writeText(descResult.text);
         setCopyFeedback("Tersalin ke Clipboard!");
-        setTimeout(() => setCopyFeedback("Salin Deskripsi"), 1500);
+        setTimeout(() => setCopyFeedback("Salin Schedula"), 1500);
       } else {
         copyFallback();
       }
@@ -49,7 +49,7 @@ export const MorphologyDescriber: React.FC = () => {
         sel.addRange(range);
       }
       setCopyFeedback("Teks terpilih, silakan salin");
-      setTimeout(() => setCopyFeedback("Salin Deskripsi"), 2000);
+      setTimeout(() => setCopyFeedback("Salin Schedula"), 2000);
     }
   };
 
@@ -59,11 +59,12 @@ export const MorphologyDescriber: React.FC = () => {
 
   return (
     <section id="deskripsi">
-      <h2>Karakterisasi Morfologi Spesimen</h2>
-      <p>
-        Catat ciri morfologi vegetatif dan generatif tumbuhan yang diamati di lapangan atau laboratorium.
-        Klik kotak pilihan untuk melihat sketsa ilustrasi tiap karakter. Kolom yang tidak teramati dapat
-        dilewati. Terminologi mengacu pada buku acuan <i>Morfologi Tumbuhan</i> (Gembong Tjitrosoepomo).
+      <h2>
+        Karakterisasi Spesimen
+        <span className="latin-tag">Schedula Morphologica</span>
+      </h2>
+      <p className="lead">
+        Instrumen pencatatan karakter organ vegetatif dan generatif tumbuhan untuk dokumentasi taksonomi, herbarium, atau laporan praktikum biosistematika. Karakter yang tidak teramati dapat dilewati.
       </p>
 
       <form className="form-masonry" onSubmit={(e) => e.preventDefault()}>
@@ -71,7 +72,7 @@ export const MorphologyDescriber: React.FC = () => {
           <fieldset key={group.groupName}>
             <legend>
               {group.groupName}
-              {group.latinName ? ` (${group.latinName})` : ""}
+              {group.latinName ? ` • ${group.latinName}` : ""}
             </legend>
             {group.fields.map((fld) => {
               if (fld.options && fld.options.length > 0) {
@@ -97,7 +98,7 @@ export const MorphologyDescriber: React.FC = () => {
                     type="text"
                     value={formData[fld.id] || ""}
                     onChange={(e) => handleFieldChange(fld.id, e.target.value)}
-                    placeholder={fld.placeholder || "Ketik keterangan pengamatan..."}
+                    placeholder={fld.placeholder || "Catatan karakter..."}
                   />
                 </div>
               );
@@ -138,21 +139,27 @@ export const MorphologyDescriber: React.FC = () => {
       </div>
 
       <p className="mn">
-        <b>Prosa Flora:</b> gaya bahasa monograf taksonomi standar.{" "}
-        <b>Diagnosis Pembeda:</b> sintesis karakter kunci pembeda untuk kunci determinasi.{" "}
-        <b>Organografi Rinci:</b> pencatatan poin analitik per organ.
+        <b>Prosa Flora:</b> teks monograf taksonomi standar.{" "}
+        <b>Diagnosis Pembeda:</b> sintesis karakter sinapomorfik untuk determinasi.{" "}
+        <b>Organografi Rinci:</b> dokumentasi analitik per organ tanaman.
       </p>
 
-      <div id="out" aria-live="polite">
-        {descResult.text}
+      <div className="output-card">
+        <div className="output-header">
+          <span>Schedula Herbarii • Deskripsi Morfologi Spesimen</span>
+          <span>{mode === "dua" ? "LENGKAP" : mode.toUpperCase()}</span>
+        </div>
+        <div id="out" aria-live="polite">
+          {descResult.text}
+        </div>
       </div>
 
       <div className="btns">
-        <button type="button" id="cp" onClick={handleCopy}>
+        <button type="button" id="cp" className="primary" onClick={handleCopy}>
           {copyFeedback}
         </button>
         <button type="button" id="pr" className="alt" onClick={handlePrint}>
-          Cetak Lembar Observasi
+          Cetak Lembar Spesimen
         </button>
         <button type="button" id="rs" className="alt" onClick={handleReset}>
           Kosongkan Formulir

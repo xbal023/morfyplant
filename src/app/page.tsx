@@ -34,7 +34,7 @@ export default function Home() {
     try {
       window.history.replaceState(null, "", `#${tab}`);
     } catch {
-      // Abaikan jika tidak didukung lingkungan
+      // Abaikan bila diabaikan browser
     }
   };
 
@@ -43,7 +43,7 @@ export default function Home() {
     try {
       window.history.replaceState(null, "", `#${sub}`);
     } catch {
-      // Abaikan jika tidak didukung lingkungan
+      // Abaikan bila diabaikan browser
     }
   };
 
@@ -59,41 +59,51 @@ export default function Home() {
 
   return (
     <main>
-      <header className="header-bar">
-        <div>
-          <h1>Atlas &amp; Morfologi Tumbuhan</h1>
-          <p className="sub-title">
-            Panduan organografi tumbuhan berbiji dan lembar karakterisasi spesimen berbasis acuan botani.
-          </p>
+      <header className="masthead">
+        <div className="masthead-meta">
+          <span>Herbarium &amp; Biosistematika Tumbuhan</span>
+          <span className="badge">Standar Morfologi Tjitrosoepomo</span>
         </div>
-        <button
-          type="button"
-          className="theme-toggle"
-          onClick={toggleTheme}
-          title="Ubah tema tampilan"
-        >
-          {theme === "auto" ? "🌓 Sistem" : theme === "dark" ? "🌙 Gelap" : "☀️ Terang"}
-        </button>
+        <div className="header-bar">
+          <div>
+            <h1>
+              Atlas Morfologi Tumbuhan <em>(Spermatophyta)</em>
+            </h1>
+            <p className="sub-title">
+              Kompendium komparatif organografi tumbuhan berbiji dan instrumen karakterisasi spesimen herbarium.
+            </p>
+          </div>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            title="Ubah tema tampilan"
+          >
+            {theme === "auto" ? "Tema: Sistem" : theme === "dark" ? "Tema: Gelap" : "Tema: Terang"}
+          </button>
+        </div>
       </header>
 
-      <nav className="tabs" aria-label="Navigasi Utama">
-        <button
-          type="button"
-          className={activeTab === "materi" ? "on" : ""}
-          onClick={() => switchTab("materi")}
-          aria-pressed={activeTab === "materi"}
-        >
-          Atlas Materi
-        </button>
-        <button
-          type="button"
-          className={activeTab === "deskripsi" ? "on" : ""}
-          onClick={() => switchTab("deskripsi")}
-          aria-pressed={activeTab === "deskripsi"}
-        >
-          Karakterisasi Spesimen
-        </button>
-      </nav>
+      <div className="tabs-container">
+        <nav className="tabs" aria-label="Navigasi Utama">
+          <button
+            type="button"
+            className={activeTab === "materi" ? "on" : ""}
+            onClick={() => switchTab("materi")}
+            aria-pressed={activeTab === "materi"}
+          >
+            Atlas Organografi
+          </button>
+          <button
+            type="button"
+            className={activeTab === "deskripsi" ? "on" : ""}
+            onClick={() => switchTab("deskripsi")}
+            aria-pressed={activeTab === "deskripsi"}
+          >
+            Karakterisasi Spesimen
+          </button>
+        </nav>
+      </div>
 
       {activeTab === "materi" ? (
         <MorphologyMateri activeSub={activeSub} onSubChange={switchSub} />
@@ -102,7 +112,8 @@ export default function Home() {
       )}
 
       <footer>
-        Disusun berdasarkan terminologi botani standar (Gembong Tjitrosoepomo) untuk observasi lapangan, praktikum biosistematika, dan dokumentasi spesimen herbarium.
+        <span>Acuan kurasi: <i>Morfologi Tumbuhan</i> (Gembong Tjitrosoepomo, UGM Press).</span>
+        <span>Dokumentasi Herbarium &amp; Biosistematika</span>
       </footer>
     </main>
   );
