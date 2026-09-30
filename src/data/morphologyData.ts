@@ -73,12 +73,26 @@ export const GROUPS: FieldGroup[] = [
     ],
   },
   {
-    groupName: "Buah & Biji",
-    latinName: "Fructus & Semen",
+    groupName: "Buah",
+    latinName: "Fructus",
     fields: [
       { id: "utipe", label: "Tipe buah", options: ["buni", "batu", "polong", "kotak", "buah padi", "agregat", "majemuk"] },
       { id: "uwarna", label: "Karakter buah masak", placeholder: "mis. kuning jingga saat masak, berdaging" },
-      { id: "ubiji", label: "Karakter biji", placeholder: "mis. 1 butir berkulit keras (endokarp membatu)" },
+      { id: "ujmlbiji", label: "Jumlah biji per buah", options: ["1 biji", "2–5 biji", "banyak biji (>5)"] },
+    ],
+  },
+  {
+    groupName: "Biji",
+    latinName: "Semen",
+    fields: [
+      { id: "bjml", label: "Jumlah kotiledon", options: ["1 kotiledon (Monokotil)", "2 kotiledon (Dikotil)"] },
+      { id: "btesta", label: "Kulit biji (testa)", options: ["tipis / membranosa", "keras / indurata", "berdaging / sarkotesta", "bersayap / alata", "berambut / pilosa", "berbintil / granulosa"] },
+      { id: "bwrntesta", label: "Warna kulit biji", placeholder: "mis. cokelat tua mengkilap, hitam berbintik putih" },
+      { id: "bhilum", label: "Hilum (pusar biji)", options: ["jelas terlihat, bulat", "jelas terlihat, memanjang", "tidak jelas / samar"] },
+      { id: "bendosp", label: "Endosperma", options: ["ada, masif (biji endospermik)", "ada, tipis saja", "tidak ada (diserap kotiledon)", "berupa perisperm"] },
+      { id: "bukuran", label: "Dimensi biji", placeholder: "mis. 8–12 × 6–9 mm, bentuk ginjal" },
+      { id: "bkecambah", label: "Tipe perkecambahan", options: ["epigeal (kotiledon terangkat)", "hipogeal (kotiledon di dalam tanah)"] },
+      { id: "bketerangan", label: "Catatan biji lainnya", placeholder: "mis. memiliki arilus jingga, biji beracun" },
     ],
   },
 ];
@@ -116,7 +130,15 @@ export const LB: Record<string, string> = {
   fwarna: "Warna mahkota",
   utipe: "Tipe buah",
   uwarna: "Karakter buah",
-  ubiji: "Karakter biji",
+  ujmlbiji: "Jumlah biji per buah",
+  bjml: "Jumlah kotiledon",
+  btesta: "Kulit biji (testa)",
+  bwrntesta: "Warna kulit biji",
+  bhilum: "Hilum (pusar biji)",
+  bendosp: "Endosperma",
+  bukuran: "Dimensi biji",
+  bkecambah: "Tipe perkecambahan",
+  bketerangan: "Catatan biji",
 };
 
 export const GR: [string, string[]][] = [
@@ -125,7 +147,8 @@ export const GR: [string, string[]][] = [
   ["Batang (Caulis)", ["bkons", "bbentuk", "barah", "bcab", "bperm", "bwarna", "bgetah", "bmod"]],
   ["Daun (Folium)", ["dtipe", "dtata", "dduduk", "dpenumpu", "dbangun", "dtepi", "dujung", "dpangkal", "dtulang", "dperm", "dwarna", "dukur"]],
   ["Bunga (Flos)", ["fperb", "fletak", "fkel", "fsim", "fjml", "fwarna"]],
-  ["Buah & Biji (Fructus & Semen)", ["utipe", "uwarna", "ubiji"]],
+  ["Buah (Fructus)", ["utipe", "uwarna", "ujmlbiji"]],
+  ["Biji (Semen)", ["bjml", "btesta", "bwrntesta", "bhilum", "bendosp", "bukuran", "bkecambah", "bketerangan"]],
 ];
 
 // SVG Icon Helpers
@@ -347,6 +370,55 @@ export const IC: Record<string, string[]> = {
     S(C(14, 14, 4.5, "f") + C(26, 14, 4.5, "f") + C(20, 22, 4.5, "f") + C(11, 24, 4.5, "f") + C(29, 24, 4.5, "f") + C(16, 31, 4.5, "f") + C(24, 31, 4.5, "f")),
     S(E(20, 22, 12, 16, 0, "t") + P("M10 16L30 28M10 24L30 12M8 22L32 22M15 8L25 36M25 8L15 36", "w")),
   ],
+  ujmlbiji: [
+    S(E(20, 20, 10, 13, 0, "t")),
+    S(E(14, 20, 8, 11, 0, "t") + E(26, 20, 8, 11, 0, "t")),
+    S(E(12, 20, 7, 10, 0, "t") + E(20, 20, 7, 10, 0, "t") + E(28, 20, 7, 10, 0, "t")),
+  ],
+  bjml: [
+    // 1 kotiledon
+    S(E(20, 22, 12, 16, 0, "i") + E(20, 14, 10, 7, 0, "f") + P("M20 38V30", "s")),
+    // 2 kotiledon
+    S(E(20, 22, 12, 16, 0, "i") + E(13, 14, 8, 6, -15, "f") + E(27, 14, 8, 6, 15, "f") + P("M20 38V30", "s")),
+  ],
+  btesta: [
+    // tipis / membranosa
+    S(E(20, 20, 14, 17, 0, "i") + E(20, 20, 13, 16, 0, "f")),
+    // keras
+    S(E(20, 20, 14, 17, 0, "t") + E(20, 20, 10, 13, 0, "i")),
+    // berdaging / sarkotesta
+    S(E(20, 20, 14, 17, 0, "f") + E(20, 20, 9, 12, 0, "i") + C(20, 20, 5, "k")),
+    // bersayap
+    S(E(20, 22, 8, 12, 0, "i") + P("M12 10L2 4M28 10L38 4", "f")),
+    // berambut
+    S(E(20, 22, 11, 15, 0, "i") + P("M9 12L4 6M14 8L11 2M20 7V1M26 8L29 2M31 12L36 6", "l")),
+    // berbintil
+    S(E(20, 22, 11, 15, 0, "i") + C(11, 14, 2, "k") + C(18, 10, 2, "k") + C(26, 12, 2, "k") + C(30, 19, 2, "k") + C(28, 28, 2, "k") + C(15, 30, 2, "k")),
+  ],
+  bhilum: [
+    // jelas, bulat
+    S(E(20, 22, 12, 16, 0, "i") + C(8, 22, 4, "f")),
+    // jelas, memanjang
+    S(E(20, 22, 12, 16, 0, "i") + E(7, 22, 2.5, 7, 0, "f")),
+    // tidak jelas
+    S(E(20, 22, 12, 16, 0, "i") + C(8, 22, 3, "l")),
+  ],
+  bendosp: [
+    // ada, masif
+    S(E(20, 22, 12, 16, 0, "f") + E(20, 22, 5, 8, 0, "i")),
+    // ada, tipis
+    S(E(20, 22, 12, 16, 0, "i") + E(20, 22, 10, 14, 0, "f")),
+    // tidak ada
+    S(E(20, 22, 12, 16, 0, "i") + E(12, 14, 6, 9, -15, "f") + E(28, 14, 6, 9, 15, "f")),
+    // perisperm
+    S(E(20, 22, 12, 16, 0, "i") + E(20, 22, 9, 12, 0, "f") + E(20, 22, 5, 7, 0, "k")),
+  ],
+  bkecambah: [
+    // epigeal
+    S(P("M4 28H36", "l") + P("M20 28V12", "s") + E(13, 18, 6, 4, -25, "f") + E(27, 18, 6, 4, 25, "f") + P("M20 12V6", "s") + E(15, 8, 5, 3, -20, "i") + E(25, 8, 5, 3, 20, "i")),
+    // hipogeal
+    S(P("M4 18H36", "l") + E(13, 24, 6, 4, -25, "f") + E(27, 24, 6, 4, 25, "f") + P("M20 18V8", "s") + E(15, 12, 5, 3, -20, "i") + E(25, 12, 5, 3, 20, "i")),
+  ],
 };
 
 export type OutputMode = "dua" | "analitik" | "diagnostik" | "naratif";
@@ -471,13 +543,27 @@ export function generateDescription(
     naratifParts.push(`Perbungaan & bunga: ${flosList.join(", ")}.`);
   }
 
-  // Buah & Biji
+  // Buah
   const fruitList: string[] = [];
   if (v("utipe")) fruitList.push(`tipe buah ${v("utipe")}`);
   if (v("uwarna")) fruitList.push(v("uwarna"));
-  if (v("ubiji")) fruitList.push(`biji ${v("ubiji")}`);
+  if (v("ujmlbiji")) fruitList.push(`mengandung ${v("ujmlbiji")}`);
   if (fruitList.length) {
-    naratifParts.push(`Buah & biji: ${fruitList.join("; ")}.`);
+    naratifParts.push(`Buah: ${fruitList.join("; ")}.`);
+  }
+
+  // Biji
+  const seedList: string[] = [];
+  if (v("bjml")) seedList.push(v("bjml"));
+  if (v("btesta")) seedList.push(`kulit biji ${v("btesta")}`);
+  if (v("bwrntesta")) seedList.push(`warna testa ${v("bwrntesta")}`);
+  if (v("bhilum")) seedList.push(`hilum ${v("bhilum")}`);
+  if (v("bendosp")) seedList.push(`endosperma ${v("bendosp")}`);
+  if (v("bukuran")) seedList.push(`ukuran ${v("bukuran")}`);
+  if (v("bkecambah")) seedList.push(`perkecambahan ${v("bkecambah")}`);
+  if (v("bketerangan")) seedList.push(v("bketerangan"));
+  if (seedList.length) {
+    naratifParts.push(`Biji: ${seedList.join("; ")}.`);
   }
 
   const Nt = `${taxonHeader}\n${"=".repeat(taxonHeader.length)}\n\n${naratifParts.join("\n\n")}`;
@@ -524,7 +610,17 @@ export function generateDescription(
     keyCharacters.push(`Bunga: ${fChar.join(", ")}`);
   }
   if (v("utipe")) {
-    keyCharacters.push(`Buah: tipe ${v("utipe")}`);
+    keyCharacters.push(`Buah: tipe ${v("utipe")}${v("ujmlbiji") ? `, ${v("ujmlbiji")}` : ""}`);
+  }
+  if (v("bjml") || v("btesta") || v("bkecambah")) {
+    const sChar = [
+      v("bjml"),
+      v("btesta") && `testa ${v("btesta")}`,
+      v("bhilum") && `hilum ${v("bhilum")}`,
+      v("bendosp") && `endosperma ${v("bendosp")}`,
+      v("bkecambah") && `perkecambahan ${v("bkecambah")}`,
+    ].filter(Boolean);
+    keyCharacters.push(`Biji: ${sChar.join("; ")}`);
   }
 
   const missingGroups = GR.slice(1)
