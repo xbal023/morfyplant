@@ -4,7 +4,7 @@ import React from "react";
 
 interface MorphologyMateriProps {
   activeSub: string;
-  onSubChange: (sub: string) => void;
+  onSubChange?: (sub: string) => void;
 }
 
 export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({

@@ -184,7 +184,7 @@ export default function Home() {
       </div>
 
       <div hidden={activeTab !== "materi"}>
-        <MorphologyMateri activeSub={activeSub} />
+        <MorphologyMateri activeSub={activeSub} onSubChange={switchSub} />
       </div>
 
       <div hidden={activeTab !== "deskripsi"}>
