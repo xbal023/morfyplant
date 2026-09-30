@@ -66,7 +66,7 @@ export const MorphologyDescriber: React.FC = () => {
         dilewati. Terminologi mengacu pada buku acuan <i>Morfologi Tumbuhan</i> (Gembong Tjitrosoepomo).
       </p>
 
-      <form className="grid" onSubmit={(e) => e.preventDefault()}>
+      <form className="form-masonry" onSubmit={(e) => e.preventDefault()}>
         {GROUPS.map((group) => (
           <fieldset key={group.groupName}>
             <legend>
