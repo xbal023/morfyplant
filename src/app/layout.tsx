@@ -2,16 +2,17 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Cheatsheet Morfologi Tumbuhan: Akar, Batang, Daun",
+  title: "Atlas & Morfologi Tumbuhan (Spermatophyta)",
   description:
-    "Ringkasan morfologi tumbuhan berbiji (akar, batang, daun, bunga, buah) dilengkapi ilustrasi SVG dan generator deskripsi tanaman otomatis.",
+    "Panduan komprehensif organografi vegetatif dan generatif tumbuhan berbiji beserta lembar kerja karakterisasi spesimen herbarium.",
   keywords: [
     "morfologi tumbuhan",
-    "akar",
-    "batang",
-    "daun",
-    "bunga",
-    "buah",
+    "organografi",
+    "radix",
+    "caulis",
+    "folium",
+    "flos",
+    "fructus",
     "dikotil",
     "monokotil",
     "botani",

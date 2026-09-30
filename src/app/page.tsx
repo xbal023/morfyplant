@@ -9,7 +9,7 @@ export default function Home() {
   const [activeSub, setActiveSub] = useState<string>("akar");
   const [theme, setTheme] = useState<"auto" | "light" | "dark">("auto");
 
-  // Sync hash on mount and changes
+  // Sinkronisasi URL hash
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.slice(1);
@@ -34,7 +34,7 @@ export default function Home() {
     try {
       window.history.replaceState(null, "", `#${tab}`);
     } catch {
-      // ignore
+      // Abaikan jika tidak didukung lingkungan
     }
   };
 
@@ -43,7 +43,7 @@ export default function Home() {
     try {
       window.history.replaceState(null, "", `#${sub}`);
     } catch {
-      // ignore
+      // Abaikan jika tidak didukung lingkungan
     }
   };
 
@@ -61,29 +61,29 @@ export default function Home() {
     <main>
       <header className="header-bar">
         <div>
-          <h1>Morfologi Tumbuhan</h1>
+          <h1>Atlas &amp; Morfologi Tumbuhan</h1>
           <p className="sub-title">
-            Ringkasan akar, batang, dan daun tumbuhan berbiji, lengkap dengan gambar.
+            Panduan organografi tumbuhan berbiji dan lembar karakterisasi spesimen berbasis acuan botani.
           </p>
         </div>
         <button
           type="button"
           className="theme-toggle"
           onClick={toggleTheme}
-          title="Ganti tema warna"
+          title="Ubah tema tampilan"
         >
-          {theme === "auto" ? "🌓 Auto" : theme === "dark" ? "🌙 Gelap" : "☀️ Terang"}
+          {theme === "auto" ? "🌓 Sistem" : theme === "dark" ? "🌙 Gelap" : "☀️ Terang"}
         </button>
       </header>
 
-      <nav className="tabs" aria-label="Tab Utama">
+      <nav className="tabs" aria-label="Navigasi Utama">
         <button
           type="button"
           className={activeTab === "materi" ? "on" : ""}
           onClick={() => switchTab("materi")}
           aria-pressed={activeTab === "materi"}
         >
-          Materi
+          Atlas Materi
         </button>
         <button
           type="button"
@@ -91,7 +91,7 @@ export default function Home() {
           onClick={() => switchTab("deskripsi")}
           aria-pressed={activeTab === "deskripsi"}
         >
-          Deskripsi tumbuhan
+          Karakterisasi Spesimen
         </button>
       </nav>
 
@@ -102,7 +102,7 @@ export default function Home() {
       )}
 
       <footer>
-        Cheatsheet ringkas untuk belajar dan latihan soal. Contoh dapat bervariasi antar buku pelajaran.
+        Disusun berdasarkan terminologi botani standar (Gembong Tjitrosoepomo) untuk observasi lapangan, praktikum biosistematika, dan dokumentasi spesimen herbarium.
       </footer>
     </main>
   );

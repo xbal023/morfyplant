@@ -1,124 +1,131 @@
 export interface FieldConfig {
   id: string;
   label: string;
+  placeholder?: string;
   options?: string[];
 }
 
 export interface FieldGroup {
   groupName: string;
+  latinName?: string;
   fields: FieldConfig[];
 }
 
 export const GROUPS: FieldGroup[] = [
   {
-    groupName: "Umum",
+    groupName: "Identitas Koleksi & Habitus",
     fields: [
-      { id: "nama", label: "Nama lokal / lokasi ditemukan" },
-      { id: "habitus", label: "Habitus", options: ["pohon", "perdu (semak)", "herba", "liana (pemanjat)", "epifit", "parasit"] },
-      { id: "tinggi", label: "Tinggi, mis. 30 cm atau 2 m" },
+      { id: "nama", label: "Nama lokal / takson / lokasi", placeholder: "mis. Mangga (Mangifera indica), halaman kampus" },
+      { id: "habitus", label: "Perawakan (habitus)", options: ["pohon", "perdu (semak)", "herba", "liana (pemanjat)", "epifit", "parasit"] },
+      { id: "tinggi", label: "Tinggi / dimensi tumbuhan", placeholder: "mis. ± 3–5 m atau 40 cm" },
     ],
   },
   {
-    groupName: "Akar",
+    groupName: "Sistem Perakaran",
+    latinName: "Radix",
     fields: [
-      { id: "akar", label: "Sistem akar", options: ["tunggang", "serabut"] },
-      { id: "akarmod", label: "Modifikasi akar", options: ["umbi akar", "akar napas", "akar tunjang", "akar gantung", "akar banir", "akar pengisap", "akar pelekat"] },
+      { id: "akar", label: "Sistem perakaran", options: ["tunggang", "serabut"] },
+      { id: "akarmod", label: "Bentuk modifikasi akar", options: ["umbi akar", "akar napas", "akar tunjang", "akar gantung", "akar banir", "akar pengisap", "akar pelekat"] },
     ],
   },
   {
-    groupName: "Batang",
+    groupName: "Batang & Percabangan",
+    latinName: "Caulis",
     fields: [
-      { id: "bkons", label: "Konsistensi", options: ["berkayu", "herba (lunak)", "basah"] },
-      { id: "bbentuk", label: "Bentuk penampang", options: ["bulat", "bersegi tiga", "bersegi empat", "pipih", "bersudut"] },
+      { id: "bkons", label: "Sifat batang", options: ["berkayu", "herba (lunak)", "basah"] },
+      { id: "bbentuk", label: "Penampang melintang", options: ["bulat", "bersegi tiga", "bersegi empat", "pipih", "bersudut"] },
       { id: "barah", label: "Arah tumbuh", options: ["tegak", "menjalar", "memanjat", "rebah", "condong"] },
-      { id: "bcab", label: "Percabangan", options: ["monopodial", "simpodial", "menggarpu", "tidak bercabang"] },
-      { id: "bperm", label: "Permukaan", options: ["licin", "berbulu", "berduri", "beralur", "bersisik", "bergabus"] },
-      { id: "bwarna", label: "Warna batang" },
-      { id: "bgetah", label: "Getah", options: ["ada, berwarna putih", "ada, bening atau berwarna", "tidak ada"] },
+      { id: "bcab", label: "Sistem percabangan", options: ["monopodial", "simpodial", "menggarpu", "tidak bercabang"] },
+      { id: "bperm", label: "Permukaan batang", options: ["licin", "berbulu", "berduri", "beralur", "bersisik", "bergabus"] },
+      { id: "bwarna", label: "Warna kulit batang", placeholder: "mis. cokelat kelabu beralur dangkal" },
+      { id: "bgetah", label: "Eksudat / getah", options: ["ada, berwarna putih", "ada, bening atau berwarna", "tidak ada"] },
       { id: "bmod", label: "Modifikasi batang", options: ["rimpang", "umbi batang", "umbi lapis", "geragih (stolon)", "kladodia", "sulur batang", "duri batang"] },
     ],
   },
   {
-    groupName: "Daun",
+    groupName: "Karakteristik Daun",
+    latinName: "Folium",
     fields: [
       { id: "dtipe", label: "Tipe daun", options: ["tunggal", "majemuk menyirip", "majemuk menjari", "beranak daun tiga"] },
-      { id: "dtata", label: "Tata letak", options: ["berseling", "berhadapan", "berkarang", "roset"] },
-      { id: "dduduk", label: "Tangkai daun", options: ["bertangkai", "duduk (tanpa tangkai)", "memeluk batang"] },
-      { id: "dpenumpu", label: "Daun penumpu", options: ["ada", "tidak ada"] },
-      { id: "dbangun", label: "Bangun helaian", options: ["bulat", "lonjong", "bulat telur", "bulat telur sungsang", "lanset", "jarum", "pita (memanjang)", "jantung", "ginjal", "segitiga", "perisai", "sudip", "belah ketupat"] },
-      { id: "dtepi", label: "Tepi", options: ["rata", "bergerigi", "bergigi", "beringgit", "bergelombang", "berlekuk", "bertoreh", "bercangap", "berbagi"] },
-      { id: "dujung", label: "Ujung", options: ["runcing", "meruncing", "tumpul", "membulat", "rompang", "berlekuk", "berduri"] },
-      { id: "dpangkal", label: "Pangkal", options: ["runcing", "tumpul", "membulat", "berlekuk", "rata", "membaji", "perisai"] },
-      { id: "dtulang", label: "Tulang daun", options: ["menyirip", "menjari", "sejajar", "melengkung"] },
-      { id: "dperm", label: "Permukaan", options: ["licin", "berbulu", "berlilin", "kasar", "berdaging", "berkerut"] },
-      { id: "dwarna", label: "Warna daun" },
-      { id: "dukur", label: "Ukuran helaian, mis. 8-12 x 3-5 cm" },
+      { id: "dtata", label: "Tata letak (filotaksis)", options: ["berseling", "berhadapan", "berkarang", "roset"] },
+      { id: "dduduk", label: "Dudukan tangkai", options: ["bertangkai", "duduk (tanpa tangkai)", "memeluk batang"] },
+      { id: "dpenumpu", label: "Daun penumpu (stipula)", options: ["ada", "tidak ada"] },
+      { id: "dbangun", label: "Bangun helaian (circumscriptio)", options: ["bulat", "lonjong", "bulat telur", "bulat telur sungsang", "lanset", "jarum", "pita (memanjang)", "jantung", "ginjal", "segitiga", "perisai", "sudip", "belah ketupat"] },
+      { id: "dtepi", label: "Tepi helaian (margo)", options: ["rata", "bergerigi", "bergigi", "beringgit", "bergelombang", "berlekuk", "bertoreh", "bercangap", "berbagi"] },
+      { id: "dujung", label: "Ujung daun (apex)", options: ["runcing", "meruncing", "tumpul", "membulat", "rompang", "berlekuk", "berduri"] },
+      { id: "dpangkal", label: "Pangkal daun (basis)", options: ["runcing", "tumpul", "membulat", "berlekuk", "rata", "membaji", "perisai"] },
+      { id: "dtulang", label: "Pertulangan (nervatio)", options: ["menyirip", "menjari", "sejajar", "melengkung"] },
+      { id: "dperm", label: "Tekstur permukaan", options: ["licin", "berbulu", "berlilin", "kasar", "berdaging", "berkerut"] },
+      { id: "dwarna", label: "Warna helaian", placeholder: "mis. hijau tua mengilat di adaksial" },
+      { id: "dukur", label: "Dimensi helaian", placeholder: "mis. 12–18 × 4–6 cm" },
     ],
   },
   {
-    groupName: "Bunga",
+    groupName: "Bunga & Perbungaan",
+    latinName: "Flos",
     fields: [
-      { id: "fperb", label: "Perbungaan", options: ["bunga tunggal", "tandan", "bulir", "malai", "payung", "bongkol", "tongkol", "periuk"] },
-      { id: "fletak", label: "Letak bunga", options: ["di ujung batang", "di ketiak daun", "di pangkal batang"] },
-      { id: "fkel", label: "Kelamin", options: ["hermafrodit (banci)", "berkelamin tunggal, berumah satu", "berkelamin tunggal, berumah dua"] },
-      { id: "fsim", label: "Simetri", options: ["aktinomorf (beraturan)", "zigomorf (setangkup)"] },
-      { id: "fjml", label: "Jumlah kelopak / mahkota, mis. 5 / 5" },
-      { id: "fwarna", label: "Warna bunga" },
+      { id: "fperb", label: "Tipe perbungaan", options: ["bunga tunggal", "tandan", "bulir", "malai", "payung", "bongkol", "tongkol", "periuk"] },
+      { id: "fletak", label: "Posisi bunga", options: ["di ujung batang", "di ketiak daun", "di pangkal batang"] },
+      { id: "fkel", label: "Keadaan kelamin", options: ["hermafrodit (banci)", "berkelamin tunggal, berumah satu", "berkelamin tunggal, berumah dua"] },
+      { id: "fsim", label: "Simetri bunga", options: ["aktinomorf (beraturan)", "zigomorf (setangkup)"] },
+      { id: "fjml", label: "Perhiasan bunga (kaliks/korola)", placeholder: "mis. sepal 5 lepas, petal 5 lepas" },
+      { id: "fwarna", label: "Warna mahkota", placeholder: "mis. putih kekuningan, beraroma harum" },
     ],
   },
   {
-    groupName: "Buah dan biji",
+    groupName: "Buah & Biji",
+    latinName: "Fructus & Semen",
     fields: [
       { id: "utipe", label: "Tipe buah", options: ["buni", "batu", "polong", "kotak", "buah padi", "agregat", "majemuk"] },
-      { id: "uwarna", label: "Warna buah (muda/masak)" },
-      { id: "ubiji", label: "Jumlah dan bentuk biji" },
+      { id: "uwarna", label: "Karakter buah masak", placeholder: "mis. kuning jingga saat masak, berdaging" },
+      { id: "ubiji", label: "Karakter biji", placeholder: "mis. 1 butir berkulit keras (endokarp membatu)" },
     ],
   },
 ];
 
 export const LB: Record<string, string> = {
-  habitus: "Habitus",
-  tinggi: "Tinggi",
-  akar: "Sistem akar",
-  akarmod: "Modifikasi",
-  bkons: "Konsistensi",
-  bbentuk: "Bentuk penampang",
+  habitus: "Perawakan (habitus)",
+  tinggi: "Dimensi / tinggi",
+  akar: "Sistem perakaran",
+  akarmod: "Modifikasi akar",
+  bkons: "Sifat batang",
+  bbentuk: "Penampang melintang",
   barah: "Arah tumbuh",
   bcab: "Percabangan",
-  bperm: "Permukaan",
-  bwarna: "Warna",
-  bgetah: "Getah",
-  bmod: "Modifikasi",
-  dtipe: "Tipe",
-  dtata: "Tata letak",
-  dduduk: "Tangkai",
+  bperm: "Permukaan batang",
+  bwarna: "Warna kulit batang",
+  bgetah: "Eksudat getah",
+  bmod: "Modifikasi batang",
+  dtipe: "Tipe daun",
+  dtata: "Tata letak daun",
+  dduduk: "Dudukan daun",
   dpenumpu: "Daun penumpu",
   dbangun: "Bangun helaian",
-  dtepi: "Tepi",
-  dujung: "Ujung",
-  dpangkal: "Pangkal",
-  dtulang: "Tulang daun",
-  dperm: "Permukaan",
-  dwarna: "Warna",
-  dukur: "Ukuran helaian",
+  dtepi: "Tepi helaian",
+  dujung: "Ujung daun",
+  dpangkal: "Pangkal daun",
+  dtulang: "Pertulangan daun",
+  dperm: "Permukaan daun",
+  dwarna: "Warna daun",
+  dukur: "Dimensi helaian",
   fperb: "Perbungaan",
-  fletak: "Letak",
-  fkel: "Kelamin",
-  fsim: "Simetri",
-  fjml: "Kelopak/mahkota",
-  fwarna: "Warna",
-  utipe: "Tipe",
-  uwarna: "Warna",
-  ubiji: "Biji",
+  fletak: "Posisi bunga",
+  fkel: "Kelamin bunga",
+  fsim: "Simetri bunga",
+  fjml: "Perhiasan bunga",
+  fwarna: "Warna mahkota",
+  utipe: "Tipe buah",
+  uwarna: "Karakter buah",
+  ubiji: "Karakter biji",
 };
 
 export const GR: [string, string[]][] = [
-  ["Umum", ["habitus", "tinggi"]],
-  ["Akar", ["akar", "akarmod"]],
-  ["Batang", ["bkons", "bbentuk", "barah", "bcab", "bperm", "bwarna", "bgetah", "bmod"]],
-  ["Daun", ["dtipe", "dtata", "dduduk", "dpenumpu", "dbangun", "dtepi", "dujung", "dpangkal", "dtulang", "dperm", "dwarna", "dukur"]],
-  ["Bunga", ["fperb", "fletak", "fkel", "fsim", "fjml", "fwarna"]],
-  ["Buah dan biji", ["utipe", "uwarna", "ubiji"]],
+  ["Habitus & Perawakan", ["habitus", "tinggi"]],
+  ["Akar (Radix)", ["akar", "akarmod"]],
+  ["Batang (Caulis)", ["bkons", "bbentuk", "barah", "bcab", "bperm", "bwarna", "bgetah", "bmod"]],
+  ["Daun (Folium)", ["dtipe", "dtata", "dduduk", "dpenumpu", "dbangun", "dtepi", "dujung", "dpangkal", "dtulang", "dperm", "dwarna", "dukur"]],
+  ["Bunga (Flos)", ["fperb", "fletak", "fkel", "fsim", "fjml", "fwarna"]],
+  ["Buah & Biji (Fructus & Semen)", ["utipe", "uwarna", "ubiji"]],
 ];
 
 // SVG Icon Helpers
@@ -342,13 +349,6 @@ export const IC: Record<string, string[]> = {
   ],
 };
 
-function joinTraits(arr: [string, string | undefined][]): string {
-  return arr
-    .filter((x): x is [string, string] => Boolean(x[1] && x[1].trim()))
-    .map((x) => x[0] + x[1].trim())
-    .join(", ");
-}
-
 export type OutputMode = "dua" | "analitik" | "diagnostik" | "naratif";
 
 export interface DescriptionResult {
@@ -364,193 +364,228 @@ export function generateDescription(
   const v = (id: string) => (values[id] || "").trim();
 
   const name = v("nama");
-  const ttl = name ? `Deskripsi tumbuhan ${name}` : "Deskripsi tumbuhan";
+  const taxonHeader = name ? `Spesimen: ${name}` : "Spesimen Pengamatan Morfologi";
 
   const hasAny = GR.some((g) => g[1].some((id) => v(id)));
 
-  let d = 0;
-  let m = 0;
-  const ba: string[] = [];
+  let dScore = 0;
+  let mScore = 0;
+  const traitsList: string[] = [];
 
   if (v("akar") === "tunggang") {
-    d++;
-    ba.push("akar tunggang");
-  }
-  if (v("akar") === "serabut") {
-    m++;
-    ba.push("akar serabut");
+    dScore += 2;
+    traitsList.push("perakaran tunggang (radix primaria)");
+  } else if (v("akar") === "serabut") {
+    mScore += 2;
+    traitsList.push("perakaran serabut (radix adventicia)");
   }
 
   if (/menyirip|menjari/.test(v("dtulang"))) {
-    d++;
-    ba.push("tulang daun " + v("dtulang"));
-  }
-  if (/sejajar|melengkung/.test(v("dtulang"))) {
-    m++;
-    ba.push("tulang daun " + v("dtulang"));
+    dScore += 2;
+    traitsList.push(`pertulangan daun ${v("dtulang")} (${v("dtulang") === "menyirip" ? "penninervis" : "palminervis"})`);
+  } else if (/sejajar|melengkung/.test(v("dtulang"))) {
+    mScore += 2;
+    traitsList.push(`pertulangan daun ${v("dtulang")} (${v("dtulang") === "sejajar" ? "rectinervis" : "curvinervis"})`);
   }
 
-  const kl =
-    d > m
-      ? "dikotil"
-      : m > d
-      ? "monokotil"
-      : d
-      ? "belum dapat ditentukan (ciri akar dan daun tidak searah)"
+  const dugaanTakson =
+    dScore > mScore
+      ? "Magnoliopsida (Dikotil / Tumbuhan Berkeping Dua)"
+      : mScore > dScore
+      ? "Liliopsida (Monokotil / Tumbuhan Berkeping Tunggal)"
+      : dScore > 0
+      ? "Perlu konfirmasi lanjutan (kombinasi ciri perakaran dan pertulangan tidak lazim)"
       : "";
-  const klOk = d !== m;
 
-  // Analitik
-  const A: string[] = [];
-  GR.forEach((g) => {
-    const items = g[1]
-      .filter((i) => v(i))
-      .map((i) => `  - ${LB[i]}: ${v(i)}`);
-    if (items.length) {
-      A.push(`${g[0]}\n${items.join("\n")}`);
+  /* ----------------------------------------------------
+     1. FORMAT FLORA / PROSA TAKSONOMIS (Naratif)
+     ---------------------------------------------------- */
+  const naratifParts: string[] = [];
+
+  // Habitus
+  const habList: string[] = [];
+  if (v("habitus")) habList.push(`berupa ${v("habitus")}`);
+  if (v("tinggi")) habList.push(`tinggi mencapai ${v("tinggi")}`);
+  if (habList.length) {
+    naratifParts.push(`Habitus ${habList.join(", ")}.`);
+  }
+
+  // Akar
+  const rootList: string[] = [];
+  if (v("akar")) rootList.push(`sistem perakaran ${v("akar")}`);
+  if (v("akarmod")) rootList.push(`bermodifikasi membentuk ${v("akarmod")}`);
+  if (rootList.length) {
+    naratifParts.push(`Akar memiliki ${rootList.join("; ")}.`);
+  }
+
+  // Batang
+  const stemList: string[] = [];
+  if (v("bkons")) stemList.push(`bersifat ${v("bkons")}`);
+  if (v("bbentuk")) stemList.push(`penampang melintang ${v("bbentuk")}`);
+  if (v("barah")) stemList.push(`tumbuh ${v("barah")}`);
+  if (v("bcab")) stemList.push(`pola percabangan ${v("bcab")}`);
+  if (v("bperm")) stemList.push(`permukaan ${v("bperm")}`);
+  if (v("bwarna")) stemList.push(`warna ${v("bwarna")}`);
+  if (v("bgetah") && v("bgetah") !== "tidak ada") stemList.push(`mengeluarkan getah ${v("bgetah").replace(/^ada,? ?/, "")}`);
+  if (v("bmod")) stemList.push(`membentuk modifikasi ${v("bmod")}`);
+  if (stemList.length) {
+    naratifParts.push(`Batang ${stemList.join(", ")}.`);
+  }
+
+  // Daun
+  const leafList: string[] = [];
+  if (v("dtipe")) leafList.push(`daun ${v("dtipe")}`);
+  if (v("dtata")) leafList.push(`duduk ${v("dtata")}`);
+  if (v("dduduk")) leafList.push(v("dduduk"));
+  if (v("dpenumpu") === "ada") leafList.push("dilengkapi daun penumpu");
+
+  const leafLamina: string[] = [];
+  if (v("dbangun")) leafLamina.push(`bangun ${v("dbangun")}`);
+  if (v("dujung")) leafLamina.push(`ujung ${v("dujung")}`);
+  if (v("dpangkal")) leafLamina.push(`pangkal ${v("dpangkal")}`);
+  if (v("dtepi")) leafLamina.push(`tepi ${v("dtepi")}`);
+  if (v("dtulang")) leafLamina.push(`pertulangan ${v("dtulang")}`);
+  if (v("dperm")) leafLamina.push(`permukaan ${v("dperm")}`);
+  if (v("dwarna")) leafLamina.push(`warna ${v("dwarna")}`);
+  if (v("dukur")) leafLamina.push(`ukuran helaian ${v("dukur")}`);
+
+  if (leafList.length || leafLamina.length) {
+    const fullLeaf = [
+      leafList.length ? leafList.join(", ") : "",
+      leafLamina.length ? `helaian ${leafLamina.join(", ")}` : "",
+    ]
+      .filter(Boolean)
+      .join("; ");
+    naratifParts.push(`Daun: ${fullLeaf}.`);
+  }
+
+  // Bunga
+  const flosList: string[] = [];
+  if (v("fperb")) flosList.push(`tipe ${v("fperb")}`);
+  if (v("fletak")) flosList.push(`posisi ${v("fletak")}`);
+  if (v("fkel")) flosList.push(v("fkel"));
+  if (v("fsim")) flosList.push(`simetri ${v("fsim")}`);
+  if (v("fjml")) flosList.push(v("fjml"));
+  if (v("fwarna")) flosList.push(`warna ${v("fwarna")}`);
+  if (flosList.length) {
+    naratifParts.push(`Perbungaan & bunga: ${flosList.join(", ")}.`);
+  }
+
+  // Buah & Biji
+  const fruitList: string[] = [];
+  if (v("utipe")) fruitList.push(`tipe buah ${v("utipe")}`);
+  if (v("uwarna")) fruitList.push(v("uwarna"));
+  if (v("ubiji")) fruitList.push(`biji ${v("ubiji")}`);
+  if (fruitList.length) {
+    naratifParts.push(`Buah & biji: ${fruitList.join("; ")}.`);
+  }
+
+  const Nt = `${taxonHeader}\n${"=".repeat(taxonHeader.length)}\n\n${naratifParts.join("\n\n")}`;
+
+  /* ----------------------------------------------------
+     2. FORMAT DIAGNOSTIK (Karakter Kunci Lapangan)
+     ---------------------------------------------------- */
+  const DgItems: string[] = [];
+  if (dugaanTakson) {
+    DgItems.push(`Takson Terduga : ${dugaanTakson}`);
+    if (traitsList.length) {
+      DgItems.push(`Karakter Bukti : ${traitsList.join("; ")}.`);
     }
-  });
-  const An = `DESKRIPSI ANALITIK\n${ttl}\n\n${A.join("\n\n")}`;
-
-  // Diagnostik
-  const Dg: string[] = [];
-  if (kl) {
-    Dg.push(`Kelas (dugaan): ${kl}${ba.length ? `, berdasarkan ${ba.join(" dan ")}` : ""}.`);
   }
 
-  let x = joinTraits([["", v("habitus")], ["tinggi ±", v("tinggi")]]);
-  if (x) Dg.push(`Habitus: ${x}.`);
-
-  const specTraits = [
-    v("akarmod") && `akar termodifikasi menjadi ${v("akarmod")}`,
-    v("bmod") && `batang termodifikasi menjadi ${v("bmod")}`,
-    /^ada/.test(v("bgetah")) && `getah ${v("bgetah").replace(/^ada,? ?/, "")}`,
-    v("bperm") === "berduri" && "batang berduri",
-  ].filter(Boolean) as string[];
-  if (specTraits.length) {
-    Dg.push(`Ciri khas akar dan batang: ${specTraits.join("; ")}.`);
+  const keyCharacters: string[] = [];
+  if (v("habitus") || v("tinggi")) {
+    keyCharacters.push(`Habitus ${v("habitus") || "tumbuhan"}${v("tinggi") ? ` (tinggi ± ${v("tinggi")})` : ""}`);
+  }
+  if (v("akar") || v("akarmod")) {
+    keyCharacters.push(`Perakaran ${[v("akar") && `sistem ${v("akar")}`, v("akarmod") && `modifikasi ${v("akarmod")}`].filter(Boolean).join(", ")}`);
+  }
+  if (v("bkons") || v("bmod") || v("bperm") === "berduri" || (v("bgetah") && v("bgetah") !== "tidak ada")) {
+    const bChar = [
+      v("bkons") && `batang ${v("bkons")}`,
+      v("bmod") && `modifikasi ${v("bmod")}`,
+      v("bperm") === "berduri" && "batang berduri",
+      v("bgetah") && v("bgetah") !== "tidak ada" && `getah ${v("bgetah").replace(/^ada,? ?/, "")}`,
+    ].filter(Boolean);
+    keyCharacters.push(bChar.join("; "));
+  }
+  if (v("dtipe") || v("dtata") || v("dbangun") || v("dtulang") || v("dtepi")) {
+    const dChar = [
+      v("dtipe") && `daun ${v("dtipe")}`,
+      v("dtata") && `duduk ${v("dtata")}`,
+      v("dbangun") && `bangun ${v("dbangun")}`,
+      v("dtulang") && `pertulangan ${v("dtulang")}`,
+      v("dtepi") && `tepi ${v("dtepi")}`,
+    ].filter(Boolean);
+    keyCharacters.push(`Karakter daun: ${dChar.join(", ")}`);
+  }
+  if (v("fperb") || v("fsim") || v("fkel")) {
+    const fChar = [v("fperb") && `perbungaan ${v("fperb")}`, v("fsim") && `simetri ${v("fsim")}`, v("fkel")].filter(Boolean);
+    keyCharacters.push(`Bunga: ${fChar.join(", ")}`);
+  }
+  if (v("utipe")) {
+    keyCharacters.push(`Buah: tipe ${v("utipe")}`);
   }
 
-  x = joinTraits([
-    ["", v("dtipe")],
-    ["", v("dtata")],
-    ["bangun ", v("dbangun")],
-    ["tepi ", v("dtepi")],
-    ["ujung ", v("dujung")],
-    ["pangkal ", v("dpangkal")],
-    ["tulang ", v("dtulang")],
-  ]);
-  if (x) Dg.push(`Daun: ${x}.`);
+  const missingGroups = GR.slice(1)
+    .filter((g) => !g[1].some((i) => v(i)))
+    .map((g) => g[0].replace(/ \(.*\)/, ""));
 
-  x = joinTraits([
-    ["", v("fperb")],
-    ["", v("fkel")],
-    ["simetri ", v("fsim")],
-    ["kelopak/mahkota ", v("fjml")],
-  ]);
-  if (x) Dg.push(`Bunga: ${x}.`);
-
-  x = joinTraits([
-    ["tipe ", v("utipe")],
-    ["biji ", v("ubiji")],
-  ]);
-  if (x) Dg.push(`Buah: ${x}.`);
-
-  const lf = [v("dtipe"), v("dtata")].filter(Boolean).join(" ");
-  const sm = [
-    [v("habitus"), klOk ? kl : ""].filter(Boolean).join(" "),
-    lf && "daun " + lf,
-    v("fperb") && "bunga " + v("fperb"),
-    v("utipe") && "buah " + v("utipe"),
+  const Dt = [
+    `DIAGNOSIS KARAKTER PEMBEDA`,
+    taxonHeader,
+    "-".repeat(36),
+    ...DgItems,
+    "",
+    "Karakter Kunci Lapangan:",
+    ...keyCharacters.map((k, idx) => `  ${idx + 1}. ${k}`),
+    missingGroups.length ? `\nCatatan Tambahan: Organ ${missingGroups.join(", ")} belum tercatat dalam observasi ini.` : "",
   ]
     .filter(Boolean)
-    .join("; ");
+    .join("\n");
 
-  const mis = GR.slice(1)
-    .filter((g) => !g[1].some((i) => v(i)))
-    .map((g) => g[0].toLowerCase());
+  /* ----------------------------------------------------
+     3. FORMAT ANALITIK (Organografi Sistematis)
+     ---------------------------------------------------- */
+  const AnSections: string[] = [];
+  GR.forEach((group) => {
+    const filled = group[1]
+      .filter((id) => v(id))
+      .map((id) => `  • ${LB[id]}: ${v(id)}`);
+    if (filled.length) {
+      AnSections.push(`[${group[0]}]\n${filled.join("\n")}`);
+    }
+  });
 
-  const Dt =
-    `DESKRIPSI DIAGNOSTIK\n${ttl}\n\n` +
-    (sm ? `Ringkasan: ${sm.charAt(0).toUpperCase() + sm.slice(1)}.\n\n` : "") +
-    Dg.map((q, i) => `${i + 1}. ${q}`).join("\n") +
-    (mis.length ? `\n\nBelum dicatat (penting untuk identifikasi): ${mis.join(", ")}.` : "");
+  const An = [
+    `DESKRIPSI ORGANOGRAFI SISTEMATIS`,
+    taxonHeader,
+    "-".repeat(36),
+    dugaanTakson ? `Kelompok Taksonomis: ${dugaanTakson}\n` : "",
+    ...AnSections,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
 
-  // Naratif
-  const L: string[] = [];
-  let t = joinTraits([["", v("habitus")], ["tinggi ±", v("tinggi")]]);
-  if (t) L.push(`Habitus: ${t}.`);
-
-  t = joinTraits([["sistem akar ", v("akar")], ["termodifikasi menjadi ", v("akarmod")]]);
-  if (t) L.push(`Akar: ${t}.`);
-
-  t = joinTraits([
-    ["", v("bkons")],
-    ["berbentuk ", v("bbentuk")],
-    ["arah tumbuh ", v("barah")],
-    ["percabangan ", v("bcab")],
-    ["permukaan ", v("bperm")],
-    ["warna ", v("bwarna")],
-    ["getah ", v("bgetah")],
-    ["termodifikasi menjadi ", v("bmod")],
-  ]);
-  if (t) L.push(`Batang: ${t}.`);
-
-  t = joinTraits([
-    ["", v("dtipe")],
-    ["", v("dtata")],
-    ["", v("dduduk")],
-    ["daun penumpu ", v("dpenumpu")],
-  ]);
-  const t2 = joinTraits([
-    ["bangun ", v("dbangun")],
-    ["tepi ", v("dtepi")],
-    ["ujung ", v("dujung")],
-    ["pangkal ", v("dpangkal")],
-    ["tulang daun ", v("dtulang")],
-    ["permukaan ", v("dperm")],
-    ["warna ", v("dwarna")],
-    ["ukuran ", v("dukur")],
-  ]);
-  if (t || t2) {
-    L.push(`Daun: ${[t, t2 && "helaian daun " + t2].filter(Boolean).join("; ")}.`);
-  }
-
-  t = joinTraits([
-    ["", v("fperb")],
-    ["letak ", v("fletak")],
-    ["", v("fkel")],
-    ["simetri ", v("fsim")],
-    ["kelopak/mahkota ", v("fjml")],
-    ["warna ", v("fwarna")],
-  ]);
-  if (t) L.push(`Bunga: ${t}.`);
-
-  t = joinTraits([
-    ["tipe ", v("utipe")],
-    ["warna ", v("uwarna")],
-    ["biji ", v("ubiji")],
-  ]);
-  if (t) L.push(`Buah: ${t}.`);
-
-  const Nt = `${ttl}\n\n${L.join("\n")}`;
-
-  let outText = "Pilih ciri di atas, deskripsi muncul di sini.";
+  /* ----------------------------------------------------
+     Output Switcher
+     ---------------------------------------------------- */
+  let outText = "Pilih karakter morfologi spesimen pada formulir di atas. Uraian botani akan tersusun di sini.";
   if (hasAny) {
     if (mode === "analitik") outText = An;
     else if (mode === "diagnostik") outText = Dt;
     else if (mode === "naratif") outText = Nt;
-    else outText = `${An}\n\n--------\n\n${Dt}`;
+    else outText = `${Nt}\n\n${"=".repeat(40)}\n\n${Dt}`;
   }
 
   let hintText: string | null = null;
-  if (d || m) {
-    if (d > m) {
-      hintText = "Petunjuk: ciri yang Anda pilih mengarah ke dikotil (akar tunggang, tulang daun menyirip/menjari).";
-    } else if (m > d) {
-      hintText = "Petunjuk: ciri yang Anda pilih mengarah ke monokotil (akar serabut, tulang daun sejajar/melengkung).";
+  if (dScore || mScore) {
+    if (dScore > mScore) {
+      hintText = `🌿 Indikasi Takson: Karakter spesimen mencerminkan kelas Magnoliopsida (Dikotil) berdasarkan ${traitsList.join(" serta ")}.`;
+    } else if (mScore > dScore) {
+      hintText = `🌱 Indikasi Takson: Karakter spesimen mencerminkan kelas Liliopsida (Monokotil) berdasarkan ${traitsList.join(" serta ")}.`;
     } else {
-      hintText = "Petunjuk: ciri akar dan daun Anda tidak searah. Periksa ulang atau cek batang dan bunga.";
+      hintText = `⚠️ Catatan Observasi: Karakter perakaran dan pertulangan daun menunjukkan polaritas berlawanan. Cek kembali buku batang dan simetri perhiasan bunga.`;
     }
   }
 

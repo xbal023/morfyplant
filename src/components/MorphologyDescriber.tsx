@@ -7,7 +7,7 @@ import { TraitPicker } from "./TraitPicker";
 export const MorphologyDescriber: React.FC = () => {
   const [formData, setFormData] = useState<Record<string, string>>({});
   const [mode, setMode] = useState<OutputMode>("dua");
-  const [copyFeedback, setCopyFeedback] = useState<string>("Salin deskripsi");
+  const [copyFeedback, setCopyFeedback] = useState<string>("Salin Deskripsi");
 
   const handleFieldChange = (id: string, value: string) => {
     setFormData((prev) => ({
@@ -28,8 +28,8 @@ export const MorphologyDescriber: React.FC = () => {
     try {
       if (navigator?.clipboard?.writeText) {
         await navigator.clipboard.writeText(descResult.text);
-        setCopyFeedback("Tersalin!");
-        setTimeout(() => setCopyFeedback("Salin deskripsi"), 1500);
+        setCopyFeedback("Tersalin ke Clipboard!");
+        setTimeout(() => setCopyFeedback("Salin Deskripsi"), 1500);
       } else {
         copyFallback();
       }
@@ -48,8 +48,8 @@ export const MorphologyDescriber: React.FC = () => {
         sel.removeAllRanges();
         sel.addRange(range);
       }
-      setCopyFeedback("Teks terpilih, salin manual");
-      setTimeout(() => setCopyFeedback("Salin deskripsi"), 2000);
+      setCopyFeedback("Teks terpilih, silakan salin");
+      setTimeout(() => setCopyFeedback("Salin Deskripsi"), 2000);
     }
   };
 
@@ -59,18 +59,20 @@ export const MorphologyDescriber: React.FC = () => {
 
   return (
     <section id="deskripsi">
-      <h2>Deskripsikan tumbuhan liar</h2>
+      <h2>Karakterisasi Morfologi Spesimen</h2>
       <p>
-        Amati tumbuhan di lapangan, pilih ciri yang terlihat, lalu salin deskripsi morfologinya.
-        Klik kotak pilihan untuk melihat gambar tiap ciri. Kolom yang dikosongkan dilewati.
-        Istilah mengikuti konvensi buku <i>Morfologi Tumbuhan</i> karya Gembong Tjitrosoepomo.
-        Cocokkan sekali lagi dengan bukunya untuk istilah yang persis.
+        Catat ciri morfologi vegetatif dan generatif tumbuhan yang diamati di lapangan atau laboratorium.
+        Klik kotak pilihan untuk melihat sketsa ilustrasi tiap karakter. Kolom yang tidak teramati dapat
+        dilewati. Terminologi mengacu pada buku acuan <i>Morfologi Tumbuhan</i> (Gembong Tjitrosoepomo).
       </p>
 
       <form className="grid" onSubmit={(e) => e.preventDefault()}>
         {GROUPS.map((group) => (
           <fieldset key={group.groupName}>
-            <legend>{group.groupName}</legend>
+            <legend>
+              {group.groupName}
+              {group.latinName ? ` (${group.latinName})` : ""}
+            </legend>
             {group.fields.map((fld) => {
               if (fld.options && fld.options.length > 0) {
                 return (
@@ -95,7 +97,7 @@ export const MorphologyDescriber: React.FC = () => {
                     type="text"
                     value={formData[fld.id] || ""}
                     onChange={(e) => handleFieldChange(fld.id, e.target.value)}
-                    placeholder="Ketik keterangan..."
+                    placeholder={fld.placeholder || "Ketik keterangan pengamatan..."}
                   />
                 </div>
               );
@@ -110,35 +112,35 @@ export const MorphologyDescriber: React.FC = () => {
           className={mode === "dua" ? "on" : ""}
           onClick={() => setMode("dua")}
         >
-          Analitik + diagnostik
-        </button>
-        <button
-          type="button"
-          className={mode === "analitik" ? "on" : ""}
-          onClick={() => setMode("analitik")}
-        >
-          Analitik
-        </button>
-        <button
-          type="button"
-          className={mode === "diagnostik" ? "on" : ""}
-          onClick={() => setMode("diagnostik")}
-        >
-          Diagnostik
+          Prosa Flora + Diagnosis
         </button>
         <button
           type="button"
           className={mode === "naratif" ? "on" : ""}
           onClick={() => setMode("naratif")}
         >
-          Naratif
+          Prosa Flora (Naratif)
+        </button>
+        <button
+          type="button"
+          className={mode === "diagnostik" ? "on" : ""}
+          onClick={() => setMode("diagnostik")}
+        >
+          Diagnosis Pembeda
+        </button>
+        <button
+          type="button"
+          className={mode === "analitik" ? "on" : ""}
+          onClick={() => setMode("analitik")}
+        >
+          Organografi Rinci
         </button>
       </div>
 
       <p className="mn">
-        <b>Analitik:</b> uraian tiap bagian secara rinci.{" "}
-        <b>Diagnostik:</b> ringkasan ciri pembeda untuk identifikasi, disusun otomatis dari ciri yang Anda isi.{" "}
-        <b>Naratif:</b> kalimat mengalir per bagian.
+        <b>Prosa Flora:</b> gaya bahasa monograf taksonomi standar.{" "}
+        <b>Diagnosis Pembeda:</b> sintesis karakter kunci pembeda untuk kunci determinasi.{" "}
+        <b>Organografi Rinci:</b> pencatatan poin analitik per organ.
       </p>
 
       <div id="out" aria-live="polite">
@@ -150,10 +152,10 @@ export const MorphologyDescriber: React.FC = () => {
           {copyFeedback}
         </button>
         <button type="button" id="pr" className="alt" onClick={handlePrint}>
-          Cetak
+          Cetak Lembar Observasi
         </button>
         <button type="button" id="rs" className="alt" onClick={handleReset}>
-          Kosongkan
+          Kosongkan Formulir
         </button>
       </div>
 
