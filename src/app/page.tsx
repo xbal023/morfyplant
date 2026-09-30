@@ -13,16 +13,20 @@ export default function Home() {
 
   // Inisialisasi tema saat mount (default: light)
   useEffect(() => {
-    const saved = localStorage.getItem("plant_theme") as "light" | "dark" | null;
-    const initialTheme = saved === "dark" ? "dark" : "light";
-    setTheme(initialTheme);
-    document.documentElement.setAttribute("data-theme", initialTheme);
+    try {
+      const saved = localStorage.getItem("plant_theme") as "light" | "dark" | null;
+      const initialTheme = saved === "dark" ? "dark" : "light";
+      setTheme(initialTheme);
+      document.documentElement.setAttribute("data-theme", initialTheme);
+    } catch {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
   }, []);
 
   const applyTheme = (newTheme: "light" | "dark") => {
     setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
     try {
+      document.documentElement.setAttribute("data-theme", newTheme);
       localStorage.setItem("plant_theme", newTheme);
     } catch {
       // Abaikan jika storage dinonaktifkan
@@ -60,6 +64,7 @@ export default function Home() {
 
   const switchSub = (sub: string) => {
     setActiveSub(sub);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     try {
       window.history.replaceState(null, "", `#${sub}`);
     } catch {
@@ -143,16 +148,51 @@ export default function Home() {
             Karakterisasi Spesimen
           </button>
         </nav>
+
+        {activeTab === "materi" && (
+          <nav className="sub-nav" aria-label="Pilih Organ Morfologi">
+            <button
+              type="button"
+              className={activeSub === "akar" ? "on" : ""}
+              onClick={() => switchSub("akar")}
+            >
+              Radix (Akar)
+            </button>
+            <button
+              type="button"
+              className={activeSub === "batang" ? "on" : ""}
+              onClick={() => switchSub("batang")}
+            >
+              Caulis (Batang)
+            </button>
+            <button
+              type="button"
+              className={activeSub === "daun" ? "on" : ""}
+              onClick={() => switchSub("daun")}
+            >
+              Folium (Daun)
+            </button>
+            <button
+              type="button"
+              className={activeSub === "bunga" ? "on" : ""}
+              onClick={() => switchSub("bunga")}
+            >
+              Flos &amp; Fructus (Bunga &amp; Buah)
+            </button>
+          </nav>
+        )}
       </div>
 
-      {activeTab === "materi" ? (
-        <MorphologyMateri activeSub={activeSub} onSubChange={switchSub} />
-      ) : (
+      <div hidden={activeTab !== "materi"}>
+        <MorphologyMateri activeSub={activeSub} />
+      </div>
+
+      <div hidden={activeTab !== "deskripsi"}>
         <MorphologyDescriber />
-      )}
+      </div>
 
       <footer>
-        <span>Acuan kurasi: <i>Morfologi Tumbuhan</i> (Gembong Tjitrosoepomo, UGM Press).</span>
+        <span>Acuan: <i>Morfologi Tumbuhan</i> (Gembong Tjitrosoepomo, UGM Press).</span>
         <span>Dokumentasi Herbarium &amp; Biosistematika</span>
       </footer>
 

@@ -9,43 +9,11 @@ interface MorphologyMateriProps {
 
 export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
   activeSub,
-  onSubChange,
 }) => {
   return (
     <div id="v-materi">
-      <nav className="sub-nav">
-        <button
-          type="button"
-          className={activeSub === "akar" ? "on" : ""}
-          onClick={() => onSubChange("akar")}
-        >
-          Radix (Akar)
-        </button>
-        <button
-          type="button"
-          className={activeSub === "batang" ? "on" : ""}
-          onClick={() => onSubChange("batang")}
-        >
-          Caulis (Batang)
-        </button>
-        <button
-          type="button"
-          className={activeSub === "daun" ? "on" : ""}
-          onClick={() => onSubChange("daun")}
-        >
-          Folium (Daun)
-        </button>
-        <button
-          type="button"
-          className={activeSub === "bunga" ? "on" : ""}
-          onClick={() => onSubChange("bunga")}
-        >
-          Flos &amp; Fructus (Bunga &amp; Buah)
-        </button>
-      </nav>
-
       {/* ================= AKAR ================= */}
-      <section id="akar" className={`pane ${activeSub !== "akar" ? "off" : ""}`}>
+      <section id="akar" className={`pane ${activeSub !== "akar" ? "off" : ""}`} hidden={activeSub !== "akar"}>
         <h2>
           Akar <span className="latin-tag">Radix • Organum Nutriens</span>
         </h2>
@@ -241,7 +209,7 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
       </section>
 
       {/* ================= BATANG ================= */}
-      <section id="batang" className={`pane ${activeSub !== "batang" ? "off" : ""}`}>
+      <section id="batang" className={`pane ${activeSub !== "batang" ? "off" : ""}`} hidden={activeSub !== "batang"}>
         <h2>
           Batang <span className="latin-tag">Caulis • Axis Vegetativus</span>
         </h2>
@@ -472,7 +440,7 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
       </section>
 
       {/* ================= DAUN ================= */}
-      <section id="daun" className={`pane ${activeSub !== "daun" ? "off" : ""}`}>
+      <section id="daun" className={`pane ${activeSub !== "daun" ? "off" : ""}`} hidden={activeSub !== "daun"}>
         <h2>
           Daun <span className="latin-tag">Folium • Organum Assimilans</span>
         </h2>
@@ -537,43 +505,84 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
               <span>Tabula III.2</span>
               <span>Nervatio Folii</span>
             </div>
-            <svg viewBox="0 0 300 280" role="img" aria-label="Empat pola venasi daun">
-              <g fill="var(--leaf)" opacity="0.85">
-                <path d="M75 15C40 45 40 95 75 125c35-30 35-80 0-110z" />
-                <path d="M225 15c-20 20-40 40-45 75c10 25 30 40 45 50c15-10 35-25 45-50c-5-35-25-55-45-75z" />
-                <path d="M60 160c-12 30-12 60 0 100h30c12-40 12-70 0-100z" />
-                <path d="M225 155C185 175 185 235 225 262c40-27 40-87 0-107z" />
+            <svg viewBox="0 0 300 255" role="img" aria-label="Empat pola utama pertulangan daun">
+              {/* Garis pemisah halus antar kuadran */}
+              <line x1="150" y1="12" x2="150" y2="242" stroke="var(--line)" strokeDasharray="3 3" opacity="0.6" />
+              <line x1="15" y1="125" x2="285" y2="125" stroke="var(--line)" strokeDasharray="3 3" opacity="0.6" />
+
+              {/* 1. Penninervis (Menyirip) - Kiri Atas */}
+              <g>
+                <path d="M75 14 C48 36 48 68 75 78 C102 68 102 36 75 14 Z" fill="var(--leaf)" opacity="0.88" />
+                <path d="M75 78 V86" stroke="var(--stem)" strokeWidth="2.2" strokeLinecap="round" />
+                <g stroke="var(--soft)" strokeWidth="1.5" fill="none" strokeLinecap="round">
+                  <path d="M75 16 V78" />
+                  <path d="M75 64 l-16 -12 M75 50 l-16 -12 M75 36 l-12 -10" />
+                  <path d="M75 64 l16 -12 M75 50 l16 -12 M75 36 l12 -10" />
+                </g>
+                <text x="75" y="102" textAnchor="middle" fontWeight="700" fontSize="11" fill="var(--ink)">
+                  Penninervis (Menyirip)
+                </text>
+                <text x="75" y="115" textAnchor="middle" fontSize="9.5" fill="var(--mute)">
+                  Mangifera, Psidium
+                </text>
               </g>
-              <g stroke="var(--soft)" strokeWidth="1.6" fill="none">
-                <path d="M75 125V20M75 105l-22-20M75 85l-22-20M75 65l-16-14M75 105l22-20M75 85l22-20M75 65l16-14" />
-                <path d="M225 140V50M225 140L185 92M225 140L200 45M225 140L250 45M225 140L265 92M225 140L170 118M225 140L280 118" />
-                <path d="M75 160v100M67 160v100M83 160v100M60 170v80M90 170v80" />
-                <path d="M225 262V158M225 250C205 235 200 200 210 165M225 250C245 235 250 200 240 165M225 240C195 220 190 195 200 172M225 240C255 220 260 195 250 172" />
+
+              {/* 2. Palminervis (Menjari) - Kanan Atas */}
+              <g>
+                <path d="M225 14 C218 32 204 27 195 30 C204 44 190 50 182 56 C198 66 212 78 225 78 C238 78 252 66 268 56 C260 50 246 44 255 30 C246 27 232 32 225 14 Z" fill="var(--leaf)" opacity="0.88" />
+                <path d="M225 78 V86" stroke="var(--stem)" strokeWidth="2.2" strokeLinecap="round" />
+                <g stroke="var(--soft)" strokeWidth="1.5" fill="none" strokeLinecap="round">
+                  <path d="M225 78 V18" />
+                  <path d="M225 78 L198 34" />
+                  <path d="M225 78 L252 34" />
+                  <path d="M225 78 L186 58" />
+                  <path d="M225 78 L264 58" />
+                </g>
+                <text x="225" y="102" textAnchor="middle" fontWeight="700" fontSize="11" fill="var(--ink)">
+                  Palminervis (Menjari)
+                </text>
+                <text x="225" y="115" textAnchor="middle" fontSize="9.5" fill="var(--mute)">
+                  Carica, Manihot
+                </text>
               </g>
-              <text x="75" y="142" textAnchor="middle" fontWeight="700">
-                Penninervis (Menyirip)
-              </text>
-              <text x="75" y="156" textAnchor="middle" fontSize="11">
-                Mangifera, Psidium
-              </text>
-              <text x="225" y="10" textAnchor="middle" fontWeight="700">
-                Palminervis (Menjari)
-              </text>
-              <text x="225" y="34" textAnchor="middle" fontSize="11">
-                Carica, Manihot
-              </text>
-              <text x="120" y="215" fontWeight="700">
-                Rectinervis (Sejajar)
-              </text>
-              <text x="120" y="229" fontSize="11">
-                Oryza, Zea mays
-              </text>
-              <text x="120" y="243" fontSize="11">
-                (Liliopsida)
-              </text>
-              <text x="225" y="275" textAnchor="middle" fontWeight="700">
-                Curvinervis (Melengkung)
-              </text>
+
+              {/* 3. Rectinervis (Sejajar) - Kiri Bawah */}
+              <g>
+                <path d="M66 142 C62 165 62 188 68 206 H82 C88 188 88 165 84 142 C80 134 70 134 66 142 Z" fill="var(--leaf)" opacity="0.88" />
+                <path d="M75 206 V214" stroke="var(--stem)" strokeWidth="2.2" strokeLinecap="round" />
+                <g stroke="var(--soft)" strokeWidth="1.3" fill="none" strokeLinecap="round">
+                  <path d="M75 137 V206" strokeWidth="1.6" />
+                  <path d="M70 142 V205" />
+                  <path d="M80 142 V205" />
+                  <path d="M66 148 V203" />
+                  <path d="M84 148 V203" />
+                </g>
+                <text x="75" y="230" textAnchor="middle" fontWeight="700" fontSize="11" fill="var(--ink)">
+                  Rectinervis (Sejajar)
+                </text>
+                <text x="75" y="243" textAnchor="middle" fontSize="9.5" fill="var(--mute)">
+                  Oryza, Zea mays
+                </text>
+              </g>
+
+              {/* 4. Curvinervis (Melengkung) - Kanan Bawah */}
+              <g>
+                <path d="M225 136 C205 153 195 180 216 205 C222 208 225 208 225 208 C225 208 228 208 234 205 C255 180 245 153 225 136 Z" fill="var(--leaf)" opacity="0.88" />
+                <path d="M225 208 V216" stroke="var(--stem)" strokeWidth="2.2" strokeLinecap="round" />
+                <g stroke="var(--soft)" strokeWidth="1.4" fill="none" strokeLinecap="round">
+                  <path d="M225 208 V138" strokeWidth="1.6" />
+                  <path d="M225 205 C205 188 205 156 225 138" />
+                  <path d="M225 205 C245 188 245 156 225 138" />
+                  <path d="M225 205 C213 192 213 168 225 148" />
+                  <path d="M225 205 C237 192 237 168 225 148" />
+                </g>
+                <text x="225" y="230" textAnchor="middle" fontWeight="700" fontSize="11" fill="var(--ink)">
+                  Curvinervis (Melengkung)
+                </text>
+                <text x="225" y="243" textAnchor="middle" fontSize="9.5" fill="var(--mute)">
+                  Piper betle, Dioscorea
+                </text>
+              </g>
             </svg>
             <figcaption>Empat pola utama pertulangan daun (nervatio). Melengkung: <i>Piper betle</i>.</figcaption>
           </figure>
@@ -732,36 +741,58 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
               <span>Tabula III.5</span>
               <span>Simplex et Compositum</span>
             </div>
-            <svg viewBox="0 0 300 150" role="img" aria-label="Daun tunggal dan majemuk">
-              <g stroke="var(--stem)" strokeWidth="3" fill="none">
-                <path d="M40 140V60M40 100" />
-                <path d="M150 140V30" />
+            <svg viewBox="0 0 330 172" role="img" aria-label="Daun tunggal dan majemuk">
+              {/* 1. Folium Simplex (Tunggal) */}
+              <g>
+                <path d="M55 138 V75" stroke="var(--stem)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                <path d="M55 105 C30 98 26 62 55 26 C84 62 80 98 55 105 Z" fill="var(--leaf)" opacity="0.88" />
+                <path d="M55 105 V34" stroke="var(--soft)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                <text x="55" y="152" textAnchor="middle" fontWeight="700" fontSize="11" fill="var(--ink)">
+                  Simplex
+                </text>
+                <text x="55" y="165" textAnchor="middle" fontSize="9.5" fill="var(--mute)">
+                  (Tunggal)
+                </text>
               </g>
-              <path d="M40 100C15 92 10 60 40 25c30 35 25 67 0 75z" fill="var(--leaf)" opacity="0.85" />
-              <g fill="var(--leaf)" opacity="0.85">
-                <ellipse cx="128" cy="55" rx="16" ry="8" transform="rotate(-20 128 55)" />
-                <ellipse cx="172" cy="55" rx="16" ry="8" transform="rotate(20 172 55)" />
-                <ellipse cx="126" cy="85" rx="16" ry="8" transform="rotate(-20 126 85)" />
-                <ellipse cx="174" cy="85" rx="16" ry="8" transform="rotate(20 174 85)" />
-                <ellipse cx="150" cy="24" rx="14" ry="8" transform="rotate(90 150 24)" />
+
+              {/* 2. Folium Compositum Pinnatum (Majemuk Menyirip) */}
+              <g>
+                <path d="M165 138 V36" stroke="var(--stem)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                {/* Anak daun terminal di pucuk */}
+                <path d="M165 38 C158 30 159 18 165 12 C171 18 172 30 165 38 Z" fill="var(--leaf)" opacity="0.88" />
+                {/* Pasangan anak daun atas */}
+                <path d="M165 56 l-14 -3 M165 56 l14 -3" stroke="var(--stem)" strokeWidth="1.5" strokeLinecap="round" />
+                <ellipse cx="141" cy="52" rx="14" ry="7" transform="rotate(-15 141 52)" fill="var(--leaf)" opacity="0.88" />
+                <ellipse cx="189" cy="52" rx="14" ry="7" transform="rotate(15 189 52)" fill="var(--leaf)" opacity="0.88" />
+                {/* Pasangan anak daun bawah */}
+                <path d="M165 84 l-14 -3 M165 84 l14 -3" stroke="var(--stem)" strokeWidth="1.5" strokeLinecap="round" />
+                <ellipse cx="141" cy="80" rx="14" ry="7" transform="rotate(-15 141 80)" fill="var(--leaf)" opacity="0.88" />
+                <ellipse cx="189" cy="80" rx="14" ry="7" transform="rotate(15 189 80)" fill="var(--leaf)" opacity="0.88" />
+                <text x="165" y="152" textAnchor="middle" fontWeight="700" fontSize="11" fill="var(--ink)">
+                  Pinnatum
+                </text>
+                <text x="165" y="165" textAnchor="middle" fontSize="9.5" fill="var(--mute)">
+                  (Menyirip)
+                </text>
               </g>
-              <g stroke="var(--stem)" strokeWidth="2.5">
-                <path d="M250 138V70M250 70L215 55M250 70L285 55M250 70V25" />
+
+              {/* 3. Folium Compositum Palmatum (Majemuk Menjari) */}
+              <g>
+                <path d="M275 138 V70" stroke="var(--stem)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                <path d="M275 70 V48 M275 70 L250 54 M275 70 L300 54 M275 70 L244 74 M275 70 L306 74" stroke="var(--stem)" strokeWidth="1.5" strokeLinecap="round" />
+                {/* Anak daun menjari */}
+                <ellipse cx="275" cy="34" rx="8" ry="15" fill="var(--leaf)" opacity="0.88" />
+                <ellipse cx="240" cy="46" rx="14" ry="7.5" transform="rotate(-30 240 46)" fill="var(--leaf)" opacity="0.88" />
+                <ellipse cx="310" cy="46" rx="14" ry="7.5" transform="rotate(30 310 46)" fill="var(--leaf)" opacity="0.88" />
+                <ellipse cx="234" cy="72" rx="13" ry="7" transform="rotate(-60 234 72)" fill="var(--leaf)" opacity="0.88" />
+                <ellipse cx="316" cy="72" rx="13" ry="7" transform="rotate(60 316 72)" fill="var(--leaf)" opacity="0.88" />
+                <text x="275" y="152" textAnchor="middle" fontWeight="700" fontSize="11" fill="var(--ink)">
+                  Palmatum
+                </text>
+                <text x="275" y="165" textAnchor="middle" fontSize="9.5" fill="var(--mute)">
+                  (Menjari)
+                </text>
               </g>
-              <g fill="var(--leaf)" opacity="0.85">
-                <ellipse cx="208" cy="52" rx="15" ry="9" transform="rotate(-20 208 52)" />
-                <ellipse cx="292" cy="52" rx="15" ry="9" transform="rotate(20 292 52)" />
-                <ellipse cx="250" cy="18" rx="9" ry="14" />
-              </g>
-              <text x="40" y="150" textAnchor="middle" fontWeight="700">
-                Folium simplex
-              </text>
-              <text x="150" y="150" textAnchor="middle" fontWeight="700">
-                Pinnatum
-              </text>
-              <text x="250" y="150" textAnchor="middle" fontWeight="700">
-                Palmatum
-              </text>
             </svg>
             <figcaption>Daun tunggal (folium simplex) vs majemuk menyirip &amp; menjari (folium compositum).</figcaption>
           </figure>
@@ -894,7 +925,7 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
       </section>
 
       {/* ================= BUNGA ================= */}
-      <section id="bunga" className={`pane ${activeSub !== "bunga" ? "off" : ""}`}>
+      <section id="bunga" className={`pane ${activeSub !== "bunga" ? "off" : ""}`} hidden={activeSub !== "bunga"}>
         <h2>
           Bunga &amp; Buah <span className="latin-tag">Flos &amp; Fructus • Organa Reproductiva</span>
         </h2>

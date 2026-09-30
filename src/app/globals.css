@@ -24,7 +24,9 @@
 }
 
 /* Hanya aktif jika user secara eksplisit memilih tema gelap */
-:root[data-theme="dark"] {
+:root[data-theme="dark"],
+html[data-theme="dark"],
+[data-theme="dark"] {
   --bg: #140816;
   --card: #1f1022;
   --ink: #faedf6;
@@ -43,7 +45,9 @@
   --accent: #d946ef;
 }
 
-:root[data-theme="light"] {
+:root[data-theme="light"],
+html[data-theme="light"],
+[data-theme="light"] {
   --bg: #fcf7fa;
   --card: #ffffff;
   --ink: #220f21;
@@ -87,6 +91,8 @@ main {
 
 /* Header & Masthead Akademis */
 .masthead {
+  position: relative;
+  z-index: 60;
   border-bottom: 2px solid var(--primary);
   padding-bottom: 18px;
   margin-bottom: 24px;
@@ -147,6 +153,8 @@ h1 em {
 
 /* Switcher Tema Terang / Gelap */
 .theme-switcher {
+  position: relative;
+  z-index: 65;
   display: inline-flex;
   align-items: center;
   background: var(--soft);
@@ -154,6 +162,7 @@ h1 em {
   padding: 3px;
   border-radius: 8px;
   gap: 3px;
+  user-select: none;
 }
 
 .theme-btn {
@@ -169,6 +178,8 @@ h1 em {
   background: transparent;
   color: var(--mute);
   cursor: pointer;
+  pointer-events: auto;
+  user-select: none;
   transition: all 0.15s ease;
 }
 
@@ -183,13 +194,21 @@ h1 em {
   box-shadow: 0 1px 4px rgba(157, 23, 109, 0.1);
 }
 
-/* Navigasi Utama: Segmented Tabs */
+/* Navigasi Utama: Segmented Tabs (Sticky) */
 .tabs-container {
+  position: sticky;
+  top: 10px;
+  z-index: 50;
   background: var(--soft);
-  padding: 4px;
-  border-radius: 8px;
+  padding: 5px;
+  border-radius: 9px;
   border: 1px solid var(--line);
   margin-bottom: 20px;
+  box-shadow: 0 4px 16px rgba(157, 23, 109, 0.1);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .tabs {
@@ -199,7 +218,7 @@ h1 em {
 
 .tabs button {
   flex: 1;
-  padding: 9px 16px;
+  padding: 8px 16px;
   font-size: 14px;
   background: transparent;
   color: var(--mute);
@@ -226,26 +245,25 @@ h1 em {
 /* Sub-Navigasi Organ Botani */
 nav.sub-nav {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   flex-wrap: wrap;
-  position: sticky;
-  top: env(safe-area-inset-top, 0px);
-  background: var(--bg);
-  padding: 8px 0;
-  z-index: 10;
-  margin-top: 4px;
-  border-bottom: 1px solid var(--line);
+  padding-top: 4px;
+  border-top: 1px solid var(--soft-border);
+  margin-bottom: 0;
 }
 
 .sub-nav button {
-  padding: 5px 14px;
+  flex: 1;
+  min-width: fit-content;
+  padding: 5px 12px;
   border-radius: 6px;
   border: 1px solid var(--line);
   background: var(--card);
   color: var(--mute);
-  font: 600 13px "Bricolage Grotesque", system-ui, sans-serif;
+  font: 600 12.5px "Bricolage Grotesque", system-ui, sans-serif;
   cursor: pointer;
   transition: all 0.15s ease;
+  text-align: center;
 }
 
 .sub-nav button:hover {
@@ -266,6 +284,14 @@ nav.sub-nav {
 }
 
 /* Konten & Tipografi Bagian */
+[hidden] {
+  display: none !important;
+}
+
+.pane.off {
+  display: none !important;
+}
+
 section {
   margin-top: 28px;
 }
@@ -375,17 +401,18 @@ figcaption em, figcaption i {
   color: var(--ink);
 }
 
-svg {
-  max-width: 210px;
-  max-height: 160px;
-  width: auto;
+figure.box svg {
+  max-width: 270px;
+  max-height: 220px;
+  width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
 }
 
 svg text {
-  font: 11px "Bricolage Grotesque", system-ui, sans-serif;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 11px;
   fill: var(--ink);
 }
 
@@ -756,6 +783,7 @@ footer {
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+  pointer-events: none;
 }
 
 .wa-floating-btn {
@@ -768,6 +796,7 @@ footer {
   background: #25d366;
   box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45), 0 2px 6px rgba(0, 0, 0, 0.15);
   text-decoration: none;
+  pointer-events: auto;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
 }
 
@@ -784,6 +813,7 @@ footer {
   border-radius: 12px;
   padding: 12px 34px 12px 14px;
   max-width: 250px;
+  pointer-events: auto;
   animation: waSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
