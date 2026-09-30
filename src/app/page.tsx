@@ -41,7 +41,7 @@ export default function Home() {
         setActiveTab("deskripsi");
       } else if (hash === "materi") {
         setActiveTab("materi");
-      } else if (["akar", "batang", "daun", "bunga"].includes(hash)) {
+      } else if (["akar", "batang", "daun", "bunga", "biji"].includes(hash)) {
         setActiveTab("materi");
         setActiveSub(hash);
       }
@@ -178,6 +178,13 @@ export default function Home() {
               onClick={() => switchSub("bunga")}
             >
               Flos &amp; Fructus (Bunga &amp; Buah)
+            </button>
+            <button
+              type="button"
+              className={activeSub === "biji" ? "on" : ""}
+              onClick={() => switchSub("biji")}
+            >
+              Semen (Biji)
             </button>
           </nav>
         )}

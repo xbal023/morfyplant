@@ -1028,6 +1028,349 @@ export const MorphologyMateri: React.FC<MorphologyMateriProps> = ({
           </table>
         </div>
       </section>
+
+      {/* ================= BIJI ================= */}
+      <section id="biji" className={`pane ${activeSub !== "biji" ? "off" : ""}`} hidden={activeSub !== "biji"}>
+        <h2>
+          Biji <span className="latin-tag">Semen • Organum Propagationis</span>
+        </h2>
+        <p className="lead">
+          Biji adalah ovulum yang telah masak setelah proses pembuahan (<i>fertilisasi</i>). Merupakan satuan diseminasi tumbuhan berbiji (<i>Spermatophyta</i>) yang mengandung embrio — calon individu baru — dilindungi oleh kulit biji (<i>testa</i>) dan umumnya disertai cadangan makanan (<i>endosperma</i> atau <i>kotiledon</i>).
+        </p>
+
+        <div className="grid">
+
+          {/* Tabula V.1 - Anatomi Biji Dikotil */}
+          <figure className="box">
+            <div className="plate-header">
+              <span>Tabula V.1</span>
+              <span>Anatomi Semen Dicotyledonae</span>
+            </div>
+            <svg viewBox="0 0 300 270" role="img" aria-label="Anatomi biji dikotil">
+              <ellipse cx="150" cy="140" rx="105" ry="80" fill="var(--soft)" stroke="var(--root)" strokeWidth="2.5"/>
+              <ellipse cx="150" cy="140" rx="105" ry="80" fill="none" stroke="var(--root)" strokeWidth="5"/>
+              <ellipse cx="150" cy="140" rx="96" ry="72" fill="none" stroke="var(--leaf)" strokeWidth="1.5" strokeDasharray="4 2"/>
+              <ellipse cx="128" cy="145" rx="58" ry="55" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.5" opacity="0.6"/>
+              <ellipse cx="172" cy="145" rx="58" ry="55" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.5" opacity="0.6"/>
+              <rect x="138" y="115" width="24" height="58" rx="10" fill="var(--flower,#e91e8c)" opacity="0.6"/>
+              <ellipse cx="150" cy="112" rx="14" ry="8" fill="var(--leaf)" opacity="0.85"/>
+              <ellipse cx="150" cy="178" rx="10" ry="6" fill="var(--root)" opacity="0.8"/>
+              <ellipse cx="47" cy="140" rx="8" ry="14" fill="var(--mute)" stroke="var(--fg)" strokeWidth="1.2"/>
+              <circle cx="47" cy="122" r="3" fill="var(--fg)" opacity="0.5"/>
+              <circle cx="47" cy="158" r="3" fill="var(--fg)" opacity="0.5"/>
+              <line x1="57" y1="130" x2="15" y2="105" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="5" y="101" fontSize="7.5" fill="var(--fg)">Hilum</text>
+              <line x1="47" y1="119" x2="10" y2="90" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="2" y="87" fontSize="7.5" fill="var(--fg)">Mikropil</text>
+              <line x1="57" y1="152" x2="12" y2="172" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="2" y="169" fontSize="7.5" fill="var(--fg)">Chalaza</text>
+              <line x1="150" y1="62" x2="205" y2="30" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="206" y="27" fontSize="7.5" fill="var(--fg)">Testa</text>
+              <line x1="180" y1="75" x2="233" y2="55" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="234" y="52" fontSize="7.5" fill="var(--fg)">Tegmen</text>
+              <line x1="178" y1="165" x2="240" y2="175" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="241" y="172" fontSize="7.5" fill="var(--fg)">Kotiledon</text>
+              <line x1="162" y1="140" x2="236" y2="130" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="237" y="127" fontSize="7.5" fill="var(--fg)">Axis embrio</text>
+              <line x1="156" y1="112" x2="221" y2="100" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="222" y="97" fontSize="7.5" fill="var(--fg)">Plumula</text>
+              <line x1="154" y1="182" x2="219" y2="195" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="220" y="193" fontSize="7.5" fill="var(--fg)">Radikula</text>
+              <text x="90" y="265" fontSize="8" fontStyle="italic" fill="var(--mute)" textAnchor="middle">Phaseolus vulgaris (kacang merah)</text>
+            </svg>
+            <figcaption>
+              Penampang biji dikotil. Embrio terdiri atas plumula, radikula, dan dua kotiledon yang berfungsi sebagai cadangan makanan.
+            </figcaption>
+          </figure>
+
+          {/* Tabula V.2 - Anatomi Biji Monokotil */}
+          <figure className="box">
+            <div className="plate-header">
+              <span>Tabula V.2</span>
+              <span>Anatomi Semen Monocotyledonae</span>
+            </div>
+            <svg viewBox="0 0 300 270" role="img" aria-label="Anatomi biji monokotil">
+              <rect x="85" y="20" width="130" height="210" rx="20" fill="var(--soft)" stroke="var(--root)" strokeWidth="2.5"/>
+              <rect x="92" y="28" width="110" height="145" rx="14" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.5" opacity="0.7"/>
+              <rect x="92" y="28" width="110" height="18" rx="10" fill="var(--flower,#e91e8c)" opacity="0.4"/>
+              <text x="147" y="41" textAnchor="middle" fontSize="8" fill="var(--fg)">Lapisan aleuron</text>
+              <text x="147" y="100" textAnchor="middle" fontSize="10" fontWeight="700" fill="var(--fg)">Endosperma</text>
+              <ellipse cx="150" cy="195" rx="35" ry="25" fill="var(--leaf)" opacity="0.6" stroke="var(--leaf)" strokeWidth="1.5"/>
+              <ellipse cx="150" cy="175" rx="28" ry="14" fill="var(--leaf)" opacity="0.5"/>
+              <rect x="143" y="173" width="14" height="22" rx="5" fill="var(--leaf)" opacity="0.85"/>
+              <ellipse cx="150" cy="210" rx="10" ry="7" fill="var(--root)" opacity="0.8"/>
+              <line x1="100" y1="90" x2="42" y2="90" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="2" y="87" fontSize="7.5" fill="var(--fg)">Endosperma</text>
+              <line x1="87" y1="22" x2="42" y2="12" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="2" y="10" fontSize="7.5" fill="var(--fg)">Pericarp+Testa</text>
+              <line x1="178" y1="175" x2="230" y2="155" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="231" y="152" fontSize="7.5" fill="var(--fg)">Skutelum</text>
+              <line x1="157" y1="184" x2="230" y2="182" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="231" y="179" fontSize="7.5" fill="var(--fg)">Koleoptil</text>
+              <line x1="178" y1="198" x2="230" y2="208" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="231" y="205" fontSize="7.5" fill="var(--fg)">Embrio</text>
+              <line x1="158" y1="213" x2="230" y2="225" stroke="var(--mute)" strokeWidth="1"/>
+              <text x="231" y="222" fontSize="7.5" fill="var(--fg)">Koleorhiza</text>
+              <text x="110" y="265" fontSize="8" fontStyle="italic" fill="var(--mute)" textAnchor="middle">Zea mays (jagung)</text>
+            </svg>
+            <figcaption>
+              Penampang biji monokotil (Gramineae). Endosperma mendominasi volume biji; embrio berada di tepi dengan skutelum sebagai kotiledon tunggal.
+            </figcaption>
+          </figure>
+
+          {/* Tabula V.3 - Kulit Biji */}
+          <figure className="box">
+            <div className="plate-header">
+              <span>Tabula V.3</span>
+              <span>Integumentum Seminis</span>
+            </div>
+            <svg viewBox="0 0 300 260" role="img" aria-label="Lapisan kulit biji">
+              <rect x="30" y="25" width="240" height="210" rx="8" fill="var(--bg,#fff)" stroke="var(--line)" strokeWidth="1.2"/>
+              <rect x="30" y="25" width="240" height="50" rx="8" fill="var(--root)" opacity="0.22"/>
+              <rect x="30" y="25" width="240" height="18" rx="8" fill="var(--root)" opacity="0.4"/>
+              <text x="150" y="38" textAnchor="middle" fontSize="8.5" fontWeight="700" fill="var(--fg)">Exotesta — sel epidermis luar</text>
+              <text x="150" y="57" textAnchor="middle" fontSize="8" fill="var(--fg)">Mesotesta — sel parenkim dan sklerenkim</text>
+              <text x="150" y="70" textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--fg)">TESTA (Kulit Luar)</text>
+              <rect x="30" y="75" width="240" height="38" fill="var(--leaf)" opacity="0.18"/>
+              <text x="150" y="95" textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--fg)">TEGMEN (Kulit Dalam)</text>
+              <text x="150" y="107" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Berasal dari integumen dalam; sering tipis/menyatu dengan testa</text>
+              <rect x="30" y="113" width="75" height="55" fill="var(--flower,#e91e8c)" opacity="0.15"/>
+              <text x="67" y="136" textAnchor="middle" fontSize="9" fontWeight="600" fill="var(--fg)">Hilum</text>
+              <text x="67" y="148" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Pusar biji</text>
+              <text x="67" y="160" textAnchor="middle" fontSize="7.5" fill="var(--mute)">(bekas funikulus)</text>
+              <rect x="108" y="113" width="75" height="55" fill="var(--accent,#9c27b0)" opacity="0.1"/>
+              <text x="145" y="136" textAnchor="middle" fontSize="9" fontWeight="600" fill="var(--fg)">Mikropil</text>
+              <text x="145" y="148" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Jalur masuk</text>
+              <text x="145" y="160" textAnchor="middle" fontSize="7.5" fill="var(--mute)">tabung serbuk sari</text>
+              <rect x="185" y="113" width="85" height="55" fill="var(--soft)" stroke="var(--line)" strokeWidth="0.8"/>
+              <text x="227" y="136" textAnchor="middle" fontSize="9" fontWeight="600" fill="var(--fg)">Raphe</text>
+              <text x="227" y="148" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Alur funikulus</text>
+              <text x="227" y="160" textAnchor="middle" fontSize="7.5" fill="var(--mute)">pada testa</text>
+              <rect x="30" y="168" width="240" height="67" rx="8" fill="var(--soft)" stroke="var(--line)" strokeWidth="1"/>
+              <text x="150" y="188" textAnchor="middle" fontSize="9" fontWeight="600" fill="var(--fg)">Chalaza</text>
+              <text x="150" y="202" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Ujung basal ovulum; tempat funikulus bersambung ke nukselus.</text>
+              <text x="150" y="215" textAnchor="middle" fontSize="7.5" fill="var(--mute)">Penting dalam transfer nutrisi ke embrio.</text>
+            </svg>
+            <figcaption>
+              Lapisan integumen biji: testa, tegmen, hilum (pusar biji), mikropil, raphe, dan chalaza.
+            </figcaption>
+          </figure>
+
+          {/* Tabula V.4 - Embrio dan Plantula */}
+          <figure className="box">
+            <div className="plate-header">
+              <span>Tabula V.4</span>
+              <span>Embryo et Plantula</span>
+            </div>
+            <svg viewBox="0 0 300 270" role="img" aria-label="Struktur embrio dan plantula">
+              <text x="75" y="16" textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--fg)">Embrio</text>
+              <ellipse cx="75" cy="50" rx="20" ry="13" fill="var(--leaf)" opacity="0.8"/>
+              <text x="105" y="48" fontSize="8" fill="var(--fg)">Plumula</text>
+              <rect x="68" y="63" width="14" height="22" rx="4" fill="var(--leaf)" opacity="0.55"/>
+              <text x="105" y="76" fontSize="8" fill="var(--fg)">Epikotil</text>
+              <line x1="88" y1="74" x2="104" y2="74" stroke="var(--mute)" strokeWidth="0.8"/>
+              <ellipse cx="55" cy="95" rx="20" ry="12" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.2"/>
+              <ellipse cx="95" cy="95" rx="20" ry="12" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.2"/>
+              <text x="105" y="100" fontSize="8" fill="var(--fg)">Kotiledon</text>
+              <line x1="101" y1="96" x2="104" y2="98" stroke="var(--mute)" strokeWidth="0.8"/>
+              <rect x="68" y="107" width="14" height="28" rx="4" fill="var(--root)" opacity="0.5"/>
+              <text x="105" y="124" fontSize="8" fill="var(--fg)">Hipokotil</text>
+              <line x1="88" y1="121" x2="104" y2="122" stroke="var(--mute)" strokeWidth="0.8"/>
+              <path d="M75 135 Q65 150 60 172 M75 135 Q85 150 90 172" stroke="var(--root)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+              <text x="105" y="153" fontSize="8" fill="var(--fg)">Radikula</text>
+              <line x1="88" y1="150" x2="104" y2="151" stroke="var(--mute)" strokeWidth="0.8"/>
+              <text x="75" y="195" textAnchor="middle" fontSize="7.5" fontStyle="italic" fill="var(--mute)">Axis embrio (Dikotil)</text>
+              <line x1="152" y1="8" x2="152" y2="262" stroke="var(--line)" strokeDasharray="4 3" strokeWidth="1"/>
+              <text x="225" y="16" textAnchor="middle" fontSize="9" fontWeight="700" fill="var(--fg)">Plantula</text>
+              <text x="225" y="26" textAnchor="middle" fontSize="7.5" fill="var(--mute)">(kecambah / semai)</text>
+              <ellipse cx="215" cy="52" rx="14" ry="9" fill="var(--leaf)" transform="rotate(-20 215 52)"/>
+              <ellipse cx="235" cy="49" rx="14" ry="9" fill="var(--leaf)" transform="rotate(15 235 49)"/>
+              <line x1="225" y1="60" x2="225" y2="88" stroke="var(--leaf)" strokeWidth="3" strokeLinecap="round"/>
+              <ellipse cx="210" cy="93" rx="16" ry="9" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.2" opacity="0.8"/>
+              <ellipse cx="240" cy="93" rx="16" ry="9" fill="var(--soft)" stroke="var(--accent,#9c27b0)" strokeWidth="1.2" opacity="0.8"/>
+              <text x="165" y="96" fontSize="7" fill="var(--mute)">Kotiledon</text>
+              <text x="165" y="106" fontSize="7" fill="var(--mute)">(epigeal)</text>
+              <line x1="225" y1="101" x2="225" y2="148" stroke="var(--root)" strokeWidth="3.5" strokeLinecap="round"/>
+              <text x="168" y="132" fontSize="7.5" fill="var(--fg)">Hipokotil</text>
+              <line x1="225" y1="148" x2="225" y2="195" stroke="var(--root)" strokeWidth="3" strokeLinecap="round"/>
+              <path d="M225 158 l-18 18 M225 172 l-14 16 M225 172 l14 16 M225 158 l18 18" stroke="var(--root)" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+              <text x="168" y="190" fontSize="7.5" fill="var(--fg)">Akar primer</text>
+              <text x="225" y="245" textAnchor="middle" fontSize="7.5" fontStyle="italic" fill="var(--mute)">Tipe perkecambahan epigeal</text>
+            </svg>
+            <figcaption>
+              Struktur embrio (kiri) vs plantula tipe epigeal (kanan). Kotiledon terangkat di atas tanah pada perkecambahan epigeal.
+            </figcaption>
+          </figure>
+
+        </div>
+
+        <h3>Komponen Utama Biji dan Fungsinya</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Struktur</th>
+              <th>Nama Latin</th>
+              <th>Asal</th>
+              <th>Fungsi Utama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Kulit biji luar</strong></td>
+              <td><i>Testa</i></td>
+              <td>Integumen luar ovulum</td>
+              <td>Proteksi mekanik, kedap air, mencegah dehidrasi embrio</td>
+            </tr>
+            <tr>
+              <td><strong>Kulit biji dalam</strong></td>
+              <td><i>Tegmen</i></td>
+              <td>Integumen dalam ovulum</td>
+              <td>Penghalang tambahan; sering tipis atau menyatu dengan testa</td>
+            </tr>
+            <tr>
+              <td><strong>Pusar biji</strong></td>
+              <td><i>Hilum</i></td>
+              <td>Bekas funikulus (tangkai ovulum)</td>
+              <td>Penanda tempat lepasnya biji dari plasenta; jalur masuk air awal</td>
+            </tr>
+            <tr>
+              <td><strong>Mikropil</strong></td>
+              <td><i>Micropyle</i></td>
+              <td>Lubang pada integumen</td>
+              <td>Jalur masuk tabung serbuk sari saat fertilisasi; jalur imbibisi saat germinasi</td>
+            </tr>
+            <tr>
+              <td><strong>Chalaza</strong></td>
+              <td><i>Chalaza</i></td>
+              <td>Dasar nuselus</td>
+              <td>Titik perlekatan integumen; jalur transfer nutrisi ke embrio</td>
+            </tr>
+            <tr>
+              <td><strong>Raphe</strong></td>
+              <td><i>Raphe</i></td>
+              <td>Funikulus yang berfusi ke testa</td>
+              <td>Terlihat sebagai alur pada testa; penanda orientasi biji</td>
+            </tr>
+            <tr>
+              <td><strong>Inti biji / Endosperma</strong></td>
+              <td><i>Endospermum</i></td>
+              <td>Hasil pembuahan ganda (inti polar + inti sperma)</td>
+              <td>Cadangan makanan: pati, lemak, protein; dominan pada Monokotil</td>
+            </tr>
+            <tr>
+              <td><strong>Kotiledon</strong></td>
+              <td><i>Cotyledon</i></td>
+              <td>Daun embrio</td>
+              <td>Cadangan makanan pada Dikotil; penyerap endosperma pada Gramineae (skutelum)</td>
+            </tr>
+            <tr>
+              <td><strong>Plumula</strong></td>
+              <td><i>Plumula</i></td>
+              <td>Ujung apikal axis embrio</td>
+              <td>Calon pucuk daun pertama; terbungkus koleoptil pada Monokotil</td>
+            </tr>
+            <tr>
+              <td><strong>Epikotil</strong></td>
+              <td><i>Epicotyl</i></td>
+              <td>Axis embrio di atas kotiledon</td>
+              <td>Berkembang menjadi batang dan daun di atas tanah</td>
+            </tr>
+            <tr>
+              <td><strong>Hipokotil</strong></td>
+              <td><i>Hypocotyl</i></td>
+              <td>Axis embrio di bawah kotiledon</td>
+              <td>Penghubung kotiledon dan radikula; memanjang kuat pada tipe epigeal</td>
+            </tr>
+            <tr>
+              <td><strong>Radikula</strong></td>
+              <td><i>Radicula</i></td>
+              <td>Ujung basal axis embrio</td>
+              <td>Calon akar primer; organ pertama yang muncul saat germinasi</td>
+            </tr>
+            <tr>
+              <td><strong>Plantula</strong></td>
+              <td><i>Plantula</i></td>
+              <td>Embrio yang sedang berkecambah</td>
+              <td>Fase kecambah muda sampai tumbuhan mampu berfotosintesis mandiri</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Tipe Perkecambahan Berdasarkan Posisi Kotiledon</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Tipe</th>
+              <th>Ciri Khas</th>
+              <th>Organ Pemanjang</th>
+              <th>Contoh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Epigeal</strong></td>
+              <td>Kotiledon terangkat ke atas permukaan tanah</td>
+              <td>Hipokotil memanjang kuat</td>
+              <td><i>Phaseolus vulgaris</i> (kacang merah), <i>Ricinus communis</i> (jarak)</td>
+            </tr>
+            <tr>
+              <td><strong>Hipogeal</strong></td>
+              <td>Kotiledon tetap di dalam atau di permukaan tanah</td>
+              <td>Epikotil memanjang kuat</td>
+              <td><i>Pisum sativum</i> (kacang polong), <i>Zea mays</i> (jagung), <i>Mangifera indica</i> (mangga)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Perbandingan Biji Dikotil vs Monokotil</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Karakter</th>
+              <th>Dicotyledonae</th>
+              <th>Monocotyledonae</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jumlah kotiledon</td>
+              <td>2 (<i>dicotyledon</i>)</td>
+              <td>1 (<i>monocotyledon</i>); disebut skutelum pada Gramineae</td>
+            </tr>
+            <tr>
+              <td>Endosperma saat biji masak</td>
+              <td>Umumnya sedikit/tidak ada (diserap kotiledon)</td>
+              <td>Sangat berkembang, mendominasi volume biji</td>
+            </tr>
+            <tr>
+              <td>Lokasi cadangan makanan</td>
+              <td>Di dalam kotiledon (pati, lemak, protein)</td>
+              <td>Di dalam endosperma (terutama pati)</td>
+            </tr>
+            <tr>
+              <td>Pelindung plumula</td>
+              <td>Tidak ada selubung khusus</td>
+              <td>Koleoptil</td>
+            </tr>
+            <tr>
+              <td>Pelindung radikula</td>
+              <td>Tidak ada selubung khusus</td>
+              <td>Koleorhiza</td>
+            </tr>
+            <tr>
+              <td>Tipe perkecambahan umum</td>
+              <td>Epigeal atau hipogeal</td>
+              <td>Umumnya hipogeal</td>
+            </tr>
+            <tr>
+              <td>Contoh</td>
+              <td><i>Phaseolus</i>, <i>Glycine max</i>, <i>Arachis hypogaea</i></td>
+              <td><i>Zea mays</i>, <i>Oryza sativa</i>, <i>Cocos nucifera</i></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
     </div>
   );
 };
