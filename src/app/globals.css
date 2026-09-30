@@ -1,17 +1,21 @@
 :root {
-  /* Fresh Academic & Archival Botanical Palette */
-  --bg: #f8f9f6;
+  /* Palet Botani Ungu Magenta ke Pink (Orchid & Bougainvillea Bloom) */
+  --bg: #fcf7fa;
   --card: #ffffff;
-  --ink: #16241a;
-  --mute: #54685b;
-  --line: #dbe2da;
-  --root: #7c4d28;
-  --stem: #966a1a;
-  --leaf: #1d5937;
-  --soft: #edf3ec;
-  --soft-border: #ccd8ca;
-  --fl: #993264;
-  --accent: #235438;
+  --ink: #220f21;
+  --mute: #70546d;
+  --line: #ecdce7;
+  --primary: #9d176d;
+  --primary-hover: #830f59;
+  --pink: #d93b95;
+  --pink-light: #fbeaf4;
+  --soft: #f7ecf4;
+  --soft-border: #e3c8dc;
+  --leaf: #9d176d;
+  --root: #824b2b;
+  --stem: #9c6a17;
+  --fl: #be2480;
+  --accent: #a21caf;
   --mono: ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
   
   box-sizing: border-box;
@@ -19,51 +23,43 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #111813;
-    --card: #18231c;
-    --ink: #e6eee7;
-    --mute: #8e9f93;
-    --line: #26382c;
-    --root: #c48956;
-    --stem: #cca03c;
-    --leaf: #4ea874;
-    --soft: #1d2c22;
-    --soft-border: #2c4434;
-    --fl: #db72a2;
-    --accent: #4ea874;
-  }
-}
-
+/* Hanya aktif jika user secara eksplisit memilih tema gelap */
 :root[data-theme="dark"] {
-  --bg: #111813;
-  --card: #18231c;
-  --ink: #e6eee7;
-  --mute: #8e9f93;
-  --line: #26382c;
-  --root: #c48956;
-  --stem: #cca03c;
-  --leaf: #4ea874;
-  --soft: #1d2c22;
-  --soft-border: #2c4434;
-  --fl: #db72a2;
-  --accent: #4ea874;
+  --bg: #140816;
+  --card: #1f1022;
+  --ink: #faedf6;
+  --mute: #ab8fa7;
+  --line: #381b3d;
+  --primary: #e645a8;
+  --primary-hover: #f364ba;
+  --pink: #f472b6;
+  --pink-light: #34122e;
+  --soft: #27142a;
+  --soft-border: #4d2354;
+  --leaf: #e645a8;
+  --root: #cca07c;
+  --stem: #dcb356;
+  --fl: #f472b6;
+  --accent: #d946ef;
 }
 
 :root[data-theme="light"] {
-  --bg: #f8f9f6;
+  --bg: #fcf7fa;
   --card: #ffffff;
-  --ink: #16241a;
-  --mute: #54685b;
-  --line: #dbe2da;
-  --root: #7c4d28;
-  --stem: #966a1a;
-  --leaf: #1d5937;
-  --soft: #edf3ec;
-  --soft-border: #ccd8ca;
-  --fl: #993264;
-  --accent: #235438;
+  --ink: #220f21;
+  --mute: #70546d;
+  --line: #ecdce7;
+  --primary: #9d176d;
+  --primary-hover: #830f59;
+  --pink: #d93b95;
+  --pink-light: #fbeaf4;
+  --soft: #f7ecf4;
+  --soft-border: #e3c8dc;
+  --leaf: #9d176d;
+  --root: #824b2b;
+  --stem: #9c6a17;
+  --fl: #be2480;
+  --accent: #a21caf;
 }
 
 html {
@@ -91,7 +87,7 @@ main {
 
 /* Header & Masthead Akademis */
 .masthead {
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 2px solid var(--primary);
   padding-bottom: 18px;
   margin-bottom: 24px;
 }
@@ -110,8 +106,8 @@ main {
 }
 
 .masthead-meta .badge {
-  background: var(--soft);
-  color: var(--leaf);
+  background: var(--pink-light);
+  color: var(--primary);
   border: 1px solid var(--soft-border);
   padding: 2px 8px;
   border-radius: 4px;
@@ -138,7 +134,7 @@ h1 {
 h1 em {
   font-style: italic;
   font-weight: 400;
-  color: var(--mute);
+  color: var(--primary);
   font-size: 0.9em;
 }
 
@@ -149,26 +145,45 @@ h1 em {
   max-width: 720px;
 }
 
-.theme-toggle {
-  padding: 5px 12px;
-  font-size: 12px;
+/* Switcher Tema Terang / Gelap */
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  padding: 3px;
+  border-radius: 8px;
+  gap: 3px;
+}
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 12px;
   font-weight: 600;
   border-radius: 6px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  color: var(--ink);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--mute);
   cursor: pointer;
-  white-space: nowrap;
   transition: all 0.15s ease;
 }
 
-.theme-toggle:hover {
-  background: var(--soft);
-  border-color: var(--soft-border);
+.theme-btn:hover {
+  color: var(--ink);
 }
 
-/* Navigasi Utama: Segmented Academic Tabs */
+.theme-btn.active {
+  background: var(--card);
+  color: var(--primary);
+  border-color: var(--soft-border);
+  box-shadow: 0 1px 4px rgba(157, 23, 109, 0.1);
+}
+
+/* Navigasi Utama: Segmented Tabs */
 .tabs-container {
   background: var(--soft);
   padding: 4px;
@@ -184,7 +199,7 @@ h1 em {
 
 .tabs button {
   flex: 1;
-  padding: 8px 16px;
+  padding: 9px 16px;
   font-size: 14px;
   background: transparent;
   color: var(--mute);
@@ -203,9 +218,9 @@ h1 em {
 
 .tabs button.on {
   background: var(--card);
-  color: var(--ink);
-  border-color: var(--line);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  color: var(--primary);
+  border-color: var(--soft-border);
+  box-shadow: 0 1px 3px rgba(157, 23, 109, 0.08);
 }
 
 /* Sub-Navigasi Organ Botani */
@@ -234,20 +249,20 @@ nav.sub-nav {
 }
 
 .sub-nav button:hover {
-  border-color: var(--leaf);
-  color: var(--ink);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .sub-nav button.on {
-  background: var(--soft);
-  border-color: var(--accent);
-  color: var(--ink);
+  background: var(--pink-light);
+  border-color: var(--primary);
+  color: var(--primary);
   font-weight: 700;
 }
 
 .sub-nav button.on::before {
   content: "• ";
-  color: var(--leaf);
+  color: var(--pink);
 }
 
 /* Konten & Tipografi Bagian */
@@ -278,19 +293,19 @@ h2 .latin-tag {
 
 #akar { --c: var(--root); }
 #batang { --c: var(--stem); }
-#daun { --c: var(--leaf); }
+#daun { --c: var(--primary); }
 #bunga { --c: var(--fl); }
-#deskripsi { --c: var(--leaf); }
+#deskripsi { --c: var(--primary); }
 
 h3 {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin: 24px 0 10px;
   color: var(--ink);
-  border-left: 3px solid var(--leaf);
+  border-left: 3px solid var(--primary);
   padding-left: 8px;
 }
 
@@ -320,13 +335,13 @@ p.lead {
   align-items: center;
   justify-content: flex-start;
   align-self: start;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .box:hover {
   border-color: var(--soft-border);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(157, 23, 109, 0.06);
 }
 
 .plate-header {
@@ -380,7 +395,7 @@ svg text {
   fill: none;
 }
 
-/* Tabel Monograf Akademis (Gaya Jurnal Sains) */
+/* Tabel Monograf Akademis */
 .tblwrap {
   overflow-x: auto;
   background: var(--card);
@@ -409,8 +424,8 @@ th {
   color: var(--ink);
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
   font-weight: 700;
-  font-size: 12.5px;
-  letter-spacing: 0.03em;
+  font-size: 12px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   border-bottom: 1.5px solid var(--line);
 }
@@ -420,13 +435,13 @@ tr:last-child td {
 }
 
 tr:hover td {
-  background: rgba(0, 0, 0, 0.01);
+  background: rgba(157, 23, 109, 0.02);
 }
 
 /* Callout Box: Catatan Taksonomi / Kunci Determinasi */
 .tip {
-  background: var(--soft);
-  border-left: 3px solid var(--leaf);
+  background: var(--pink-light);
+  border-left: 3px solid var(--primary);
   border-radius: 0 6px 6px 0;
   padding: 10px 14px;
   margin-top: 14px;
@@ -477,14 +492,14 @@ fieldset {
 
 legend {
   font-family: "Bricolage Grotesque", system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 2px 8px;
   border-radius: 4px;
-  background: var(--soft);
-  color: var(--ink);
+  background: var(--pink-light);
+  color: var(--primary);
   border: 1px solid var(--soft-border);
 }
 
@@ -514,8 +529,8 @@ select, input, textarea {
 
 input:focus, textarea:focus, select:focus {
   outline: none;
-  border-color: var(--leaf);
-  box-shadow: 0 0 0 3px rgba(36, 94, 61, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(157, 23, 109, 0.12);
 }
 
 .pk {
@@ -535,7 +550,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .pk:hover {
-  border-color: var(--leaf);
+  border-color: var(--primary);
 }
 
 .pk span {
@@ -565,7 +580,7 @@ input:focus, textarea:focus, select:focus {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
   padding: 6px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
@@ -591,14 +606,15 @@ input:focus, textarea:focus, select:focus {
 }
 
 .tile:hover {
-  background: var(--soft);
-  border-color: var(--line);
+  background: var(--pink-light);
+  border-color: var(--soft-border);
 }
 
 .tile.on {
-  border-color: var(--leaf);
-  background: var(--soft);
+  border-color: var(--primary);
+  background: var(--pink-light);
   font-weight: 700;
+  color: var(--primary);
 }
 
 .tile svg {
@@ -607,19 +623,19 @@ input:focus, textarea:focus, select:focus {
   flex: none;
 }
 
-/* Output Display: Schedula Herbarii (Lembar Spesimen Herbarium) */
+/* Output Display: Schedula Herbarii */
 .output-card {
   margin-top: 18px;
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 1.5px solid var(--soft-border);
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px rgba(157, 23, 109, 0.05);
   overflow: hidden;
 }
 
 .output-header {
-  background: var(--soft);
-  border-bottom: 1px solid var(--line);
+  background: var(--pink-light);
+  border-bottom: 1px solid var(--soft-border);
   padding: 8px 14px;
   display: flex;
   justify-content: space-between;
@@ -628,7 +644,8 @@ input:focus, textarea:focus, select:focus {
   font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--mute);
+  color: var(--primary);
+  font-weight: 700;
 }
 
 #out {
@@ -661,13 +678,13 @@ input:focus, textarea:focus, select:focus {
 }
 
 .seg button:hover {
-  color: var(--ink);
-  border-color: var(--leaf);
+  color: var(--primary);
+  border-color: var(--soft-border);
 }
 
 .seg button.on {
-  background: var(--leaf);
-  border-color: var(--leaf);
+  background: var(--primary);
+  border-color: var(--primary);
   color: #ffffff;
 }
 
@@ -688,8 +705,8 @@ input:focus, textarea:focus, select:focus {
 button.primary {
   padding: 7px 16px;
   border-radius: 6px;
-  border: 1px solid var(--leaf);
-  background: var(--leaf);
+  border: 1px solid var(--primary);
+  background: var(--primary);
   color: #ffffff;
   font: 600 13px "Bricolage Grotesque", system-ui, sans-serif;
   cursor: pointer;
@@ -697,7 +714,7 @@ button.primary {
 }
 
 button.primary:hover {
-  background: #17472c;
+  background: var(--primary-hover);
 }
 
 button.alt {
@@ -729,8 +746,119 @@ footer {
   gap: 10px;
 }
 
+/* Floating WhatsApp Widget Modern */
+.wa-floating-wrapper {
+  position: fixed;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  right: calc(22px + env(safe-area-inset-right, 0px));
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.wa-floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45), 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.wa-floating-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.55), 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.wa-popup-bubble {
+  position: relative;
+  background: var(--card);
+  border: 1.5px solid var(--soft-border);
+  box-shadow: 0 10px 30px rgba(157, 23, 109, 0.14), 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 12px 34px 12px 14px;
+  max-width: 250px;
+  animation: waSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes waSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.wa-popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.wa-popup-badge {
+  display: inline-block;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  background: var(--pink-light);
+  border: 1px solid var(--soft-border);
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: 2px;
+}
+
+.wa-popup-title {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.wa-popup-cta {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #128c7e;
+  margin-top: 2px;
+}
+
+.wa-popup-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--mute);
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 50%;
+  transition: color 0.15s ease;
+}
+
+.wa-popup-close:hover {
+  color: var(--primary);
+}
+
 /* Palet Warna SVG Anatomi Botani */
-svg .i { fill: var(--leaf); }
+svg .i { fill: var(--primary); }
 svg .t { fill: var(--stem); }
 svg .d { fill: var(--root); }
 svg .f { fill: var(--fl); }
@@ -746,7 +874,7 @@ svg .s, svg .s6, svg .sl, svg .rs, svg .m, svg .l, svg .w, svg .ds {
 
 svg .s { stroke: var(--stem); stroke-width: 2.6; }
 svg .s6 { stroke: var(--stem); stroke-width: 6; }
-svg .sl { stroke: var(--leaf); stroke-width: 2.6; }
+svg .sl { stroke: var(--primary); stroke-width: 2.6; }
 svg .rs { stroke: var(--root); stroke-width: 2.4; }
 svg .m { stroke: var(--mute); stroke-width: 4; }
 svg .l { stroke: var(--ink); stroke-width: 1.5; }
@@ -754,7 +882,7 @@ svg .w { stroke: var(--card); stroke-width: 1.6; }
 svg .ds { stroke: var(--ink); stroke-width: 1; stroke-dasharray: 3 2; }
 
 @media print {
-  nav, .tabs-container, .sub-nav, .btns, .seg, #deskripsi form, .theme-toggle, .masthead-meta {
+  nav, .tabs-container, .sub-nav, .btns, .seg, #deskripsi form, .theme-switcher, .masthead-meta, .wa-floating-wrapper {
     display: none !important;
   }
   body {
